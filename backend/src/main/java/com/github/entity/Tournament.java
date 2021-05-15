@@ -23,6 +23,8 @@ public class Tournament {
 
     private String scenario_for_tournament;
 
+    private String invited_players;
+
     public String getTournament_name() {
         return tournament_name;
     }
@@ -102,8 +104,6 @@ public class Tournament {
     public void setInvited_players(String invited_players) {
         this.invited_players = invited_players;
     }
-
-    private String invited_players;
 
     @Override
     public boolean equals(Object o) {
