@@ -4,8 +4,6 @@ import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.utils.HibernateUtils;
-import org.hibernate.Hibernate;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,6 +23,11 @@ public class UsersRepository {
         }
     }
 
+    public static void main(String[] args) {
+        UsersRepository usersRepository = new UsersRepository();
+        usersRepository.saveStudent(new User());
+    }
+
     public User findByAuthDto(UserAuthorizationDto userAuthorizationDto){
 //        return jdbcTemplate.findBy(
 //                "SELECT * FROM users WHERE login = ? AND password = ?",
@@ -36,21 +39,12 @@ public class UsersRepository {
     }
 
     public User findById(long id){
-        Session session = null;
-        User user = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            user =  session.load(User.class,
-                    id);
-            Hibernate.initialize(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return user;
+//        return jdbcTemplate.findBy(
+//                "SELECT * FROM users WHERE id = ?",
+//                RowMappers.getCustomRowMapperUser(),
+//                id
+//        );
+        return null;
     }
 
     public User insert(UserRegistrationDto userRegistrationDto){
@@ -89,12 +83,6 @@ public class UsersRepository {
 //                userRegistrationDto.getPhone(),
 //                userRegistrationDto.getLogin()
 //                );
-    }
-
-    public static void main(String[] args) {
-        UsersRepository usersRepository = new UsersRepository();
-        usersRepository.saveStudent(new User());
-        System.out.println(usersRepository.findById(1));
     }
 
 }

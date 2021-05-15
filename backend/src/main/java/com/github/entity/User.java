@@ -1,5 +1,7 @@
 package com.github.entity;
 
+import com.github.dto.UserAuthorizationDto;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -123,6 +125,11 @@ public class User {
 
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
+    }
+
+    public User(UserAuthorizationDto userAuthorizationDto) {
+        this.nickname = userAuthorizationDto.getLogin();
+        this.password = userAuthorizationDto.getPassword();
     }
 
     @Override

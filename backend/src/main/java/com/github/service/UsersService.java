@@ -22,8 +22,8 @@ public class UsersService {
         return this.usersRepository.findByAuthDto(auth);
     }
 
-    public User insert(UserRegistrationDto userRegistrationDto) {
-        return this.usersRepository.insert(userRegistrationDto);
+    public User save(UserAuthorizationDto userAuthorizationDto) {
+        return this.usersRepository.saveStudent(new User(userAuthorizationDto));
     }
 
     public void delete(UserRegistrationDto userRegistrationDto) {

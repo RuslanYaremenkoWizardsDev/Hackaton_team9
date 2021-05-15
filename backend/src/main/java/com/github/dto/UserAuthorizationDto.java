@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class UserAuthorizationDto {
 
+    //TODO make @ email or nickname validation
+
     private String login;
 
     private String password;
