@@ -40,14 +40,6 @@
       color: #000;
       // position: relative;
     }
-    input.pass::before{
-      height: 200px;
-      width: 200px;
-      // background-image: url(../assets/img/show_hide.svg);
-      // background-repeat: no-repeat;
-      // background-position: 90% center;
-      content: 'sada';
-    }
   }
   
   &__err{
