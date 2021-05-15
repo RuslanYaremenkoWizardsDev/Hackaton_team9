@@ -1,6 +1,6 @@
 package com.github.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
 

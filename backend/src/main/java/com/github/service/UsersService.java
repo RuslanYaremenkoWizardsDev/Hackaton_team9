@@ -1,8 +1,8 @@
 package com.github.service;
 
 
-import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.dto.UserAuthorizationDto;
 import com.github.entity.User;
 import com.github.repository.UsersRepository;
 

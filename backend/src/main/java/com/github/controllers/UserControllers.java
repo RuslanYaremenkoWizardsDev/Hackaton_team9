@@ -1,13 +1,13 @@
 package com.github.controllers;
 
 
-import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.service.UsersService;
+import com.github.dto.UserAuthorizationDto;
 import com.github.entity.User;
 import com.github.exceptions.CryptoException;
 import com.github.exceptions.UserAlreadyExistException;
 import com.github.payload.Token;
-import com.github.service.UsersService;
 import com.github.utils.TokenProvider;
 
 public class UserControllers {

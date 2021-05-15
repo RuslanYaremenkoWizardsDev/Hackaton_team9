@@ -1,7 +1,7 @@
 package com.github.service;
 
-import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.dto.UserAuthorizationDto;
 import com.github.entity.User;
 
 public interface IUserService {

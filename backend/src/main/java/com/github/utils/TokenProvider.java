@@ -1,7 +1,7 @@
 package com.github.utils;
 
-import com.github.exceptions.CryptoException;
 import com.github.payload.Token;
+import com.github.exceptions.CryptoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
