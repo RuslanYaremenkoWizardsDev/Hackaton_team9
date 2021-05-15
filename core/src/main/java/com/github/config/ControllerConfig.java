@@ -1,6 +1,6 @@
 package com.github.config;
 
-import org.bitbucket.controllers.UserControllers;
+import com.github.controllers.UserControllers;
 
 public class ControllerConfig {
 

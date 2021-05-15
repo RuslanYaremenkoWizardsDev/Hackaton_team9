@@ -4,6 +4,7 @@ package com.github.controllers;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
+import com.github.exceptions.CryptoException;
 import com.github.exceptions.UserAlreadyExistException;
 import com.github.payload.Token;
 import com.github.service.UsersService;
@@ -19,15 +20,18 @@ public class UserControllers {
 
     public String auth(UserAuthorizationDto payload) {
         User user = this.usersService.findByAuth(payload);
-        return TokenProvider.encode(new Token(user));
+        try {
+            return TokenProvider.encode(new Token(user));
+        } catch (CryptoException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void registration(UserRegistrationDto userRegistrationDto) {
-        //User u = TransferObj.toUser(payload);
         if (this.usersService.findByAuth(new UserAuthorizationDto(userRegistrationDto)) != null) {
             throw new UserAlreadyExistException();
         }
-        //customUsersService.insert(u);
         usersService.insert(userRegistrationDto);
     }
 }
