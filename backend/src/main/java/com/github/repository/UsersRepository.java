@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 public class UsersRepository {
 
-    public void saveStudent(User user) {
+    public User saveStudent(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -21,11 +21,7 @@ public class UsersRepository {
             }
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        UsersRepository usersRepository = new UsersRepository();
-        usersRepository.saveStudent(new User());
+        return user;
     }
 
     public User findByAuthDto(UserAuthorizationDto userAuthorizationDto){
@@ -43,21 +39,6 @@ public class UsersRepository {
 //                "SELECT * FROM users WHERE id = ?",
 //                RowMappers.getCustomRowMapperUser(),
 //                id
-//        );
-        return null;
-    }
-
-    public User insert(UserRegistrationDto userRegistrationDto){
-        System.out.println("INSERT");
-//        return jdbcTemplate.insert(
-//                "INSERT INTO users (first_name, last_name, email, login, password, phone_number) VALUES(?, ?, ?, ?, ?, ?)",
-//                RowMappers.getCustomRowMapperUser(),
-//                userRegistrationDto.getFirstName(),
-//                userRegistrationDto.getLastName(),
-//                userRegistrationDto.getEmail(),
-//                userRegistrationDto.getLogin(),
-//                userRegistrationDto.getPassword(),
-//                userRegistrationDto.getPhone()
 //        );
         return null;
     }

@@ -1,7 +1,6 @@
 package com.github.controllers;
 
 
-import com.github.dto.UserRegistrationDto;
 import com.github.service.UsersService;
 import com.github.dto.UserAuthorizationDto;
 import com.github.entity.User;
@@ -28,10 +27,10 @@ public class UserControllers {
         }
     }
 
-    public void registration(UserRegistrationDto userRegistrationDto) {
-        if (this.usersService.findByAuth(new UserAuthorizationDto(userRegistrationDto)) != null) {
+    public void registration(UserAuthorizationDto userAuthorizationDto) {
+        if (this.usersService.findByAuth(userAuthorizationDto) != null) {
             throw new UserAlreadyExistException();
         }
-        usersService.insert(userRegistrationDto);
+        usersService.save(userAuthorizationDto);
     }
 }
