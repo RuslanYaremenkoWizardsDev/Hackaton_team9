@@ -1,0 +1,68 @@
+.page{
+  padding-top: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+
+}
+
+.auth{
+  justify-self: start;
+  background: $bg-secondary;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  h1{
+    text-transform: uppercase;
+    font-size: 22px;
+    margin: 10px 0;
+  }
+  &__link{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    a{
+      margin-top: 5px;
+      color: #e5e5e5;
+      text-decoration: none;
+    }
+  }
+  &__field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    input{
+      margin-top: 5px;
+      padding: 5px;
+      width: 100%;
+      color: #000;
+      // position: relative;
+    }
+    input.pass::before{
+      height: 200px;
+      width: 200px;
+      // background-image: url(../assets/img/show_hide.svg);
+      // background-repeat: no-repeat;
+      // background-position: 90% center;
+      content: 'sada';
+    }
+  }
+  
+  &__err{
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: rgb(255, 92, 92);
+      width: 190px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.4s opacity, 0.4s visibility;
+      &-visible {
+        opacity: 1!important;
+        visibility: visible!important;
+        transition: 0.55s opacity, 0.55s visibility;
+      }
+  }
+}
