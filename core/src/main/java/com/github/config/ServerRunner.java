@@ -6,9 +6,6 @@ import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.function.Consumer;
-
 public class ServerRunner {
 
     private final Logger logger = LoggerFactory.getLogger(ServerRunner.class);

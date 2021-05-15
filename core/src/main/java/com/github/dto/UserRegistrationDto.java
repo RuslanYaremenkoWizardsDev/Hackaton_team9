@@ -1,7 +1,6 @@
 package com.github.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.github.entity.User;
 
 import java.util.Objects;
 

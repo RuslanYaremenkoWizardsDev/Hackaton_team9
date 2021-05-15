@@ -5,9 +5,6 @@ import com.github.payload.Token;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
-import java.security.Key;
-import java.util.Arrays;
 import java.util.Base64;
 
 public class TokenProvider {
