@@ -12,56 +12,70 @@ import java.util.Base64;
 
 public class TokenProvider {
 
-    private static final String key = "TopSecret2281337";
-    private static Key aesKey;
+    private static final Logger log = LoggerFactory.getLogger(TokenProvider.class);
 
-    static {
-        try {
-            aesKey = new SecretKeySpec(Arrays.copyOf(key.getBytes("UTF-8"), 16), "AES");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+    private static final String SECRET_KEY = "Hackaton";
+
+    private static final String SALT = "Team9";
+
+    private static byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+    public static String encode(Token t) {
+        if(t == null){
+            throw new CryptoException ("Empty token!");
         }
-    }
-
-    public static String encrypt(String data) {
-
-
-        byte[] decodedKey = Base64.getDecoder().decode(key);
-
+        String str = JsonHelper.toJson(t).get();
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            SecretKey originalKey = new SecretKeySpec(Arrays.copyOf(decodedKey, 16), "AES");
-            cipher.init(Cipher.ENCRYPT_MODE, originalKey);
-            byte[] cipherText = cipher.doFinal(data.getBytes("UTF-8"));
-            return Base64.getEncoder().encodeToString(cipherText);
+            IvParameterSpec ivspec = new IvParameterSpec(iv);
+
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            KeySpec spec = new PBEKeySpec(SECRET_KEY.toCharArray(), SALT.getBytes(), 65536, 256);
+            SecretKey tmp = factory.generateSecret(spec);
+            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivspec);
+            return Base64.getEncoder()
+                    .encodeToString(cipher.doFinal(str.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
-            throw new RuntimeException(
-                    "Error occured while encrypting data", e);
+            log.error("Error while encrypting: " + e);
         }
-
+        log.info("Cipher token!");
+        return null;
     }
 
-    public static String decrypt(String encryptedString) {
-        byte[] decodedKey = Base64.getDecoder().decode(key);
+    public static Token decode(String str) {
+        Token newT = null;
+
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            SecretKey originalKey = new SecretKeySpec(Arrays.copyOf(decodedKey, 16), "AES");
-            cipher.init(Cipher.DECRYPT_MODE, originalKey);
-            byte[] cipherText = cipher.doFinal(Base64.getDecoder().decode(encryptedString));
-            return new String(cipherText);
+            IvParameterSpec ivspec = new IvParameterSpec(iv);
+
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            KeySpec spec = new PBEKeySpec(SECRET_KEY.toCharArray(), SALT.getBytes(), 65536, 256);
+            SecretKey tmp = factory.generateSecret(spec);
+            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
+            newT = JsonHelper.fromJson(new String(cipher.doFinal(Base64.getDecoder().decode(str))), Token.class).orElse(null);
         } catch (Exception e) {
-            throw new RuntimeException(
-                    "Error occured while decrypting data", e);
+            log.error("Error while decrypting: " + e);
+        }
+        return newT;
+    }
+
+    public static boolean checkToken(String str) {
+        Token token = decode(str);
+        if(token == null){
+            log.info("Token is null!");
+            return false;
+        }
+        if (token.getExpire_in() < new Date().getTime()){
+            log.info("Token expired!");
+            return false;
+        } else {
+            return true;
         }
     }
-
-    public static String encode(Token token) {
-        String jsonToken = JsonHelper.toFormat(token).orElse(null);
-        return encrypt(jsonToken);
-    }
-
-    public static Token decode(String string) {
-        return JsonHelper.fromFormat(decrypt(string), Token.class).orElse(null);
-    }
-
 }
