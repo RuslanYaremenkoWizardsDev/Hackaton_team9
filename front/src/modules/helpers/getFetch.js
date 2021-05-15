@@ -1,5 +1,5 @@
 export default function getFetch(url, method = 'GET', body = null) {
-  fetch(`http://localhost:3000${url}`, {
+  return fetch(`http://localhost:3000${url}`, {
     method,
     body: JSON.stringify(body),
     headers: {

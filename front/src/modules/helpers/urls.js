@@ -1,5 +1,5 @@
 const urls = {
-  auth: '/auth',
-  registr: ''
+  auth: '/auth/login',
+  registr: '/auth/registration'
 };
 export default urls;

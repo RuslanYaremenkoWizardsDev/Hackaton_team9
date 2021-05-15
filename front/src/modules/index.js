@@ -2,14 +2,14 @@ import validation from './auth/validation';
 import getFetch from './helpers/getFetch';
 import urls from './helpers/urls';
 import { message } from './helpers/constants';
-import {modal} from './helpers/modal'
-import renderModal from './mainPage/renderModal';
+import { support } from './helpers/support';
+import { login, registration } from './auth/auth';
 
 export {
-  validation, getFetch,renderModal
+  validation, getFetch, login, registration
 };
 
 export {
-  urls, message,modal
+  urls, message, support
 };
 

@@ -1,21 +1,21 @@
-        .content-tournaments{
-            display: flex;
-            flex-direction: column;
-            background: $bg-secondary;
-            &__search-box{
-                color:$bg-white;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 20px;
-            }
-            &__search-form{
-                display: flex;
-                flex-direction: column;
-            }
-            &__table{
-                background: $bg-white;
-                height: 250px;   //temporary
-                margin: 0 20px 20px;
-            }
-        }
+.content-tournaments{
+    display: flex;
+    flex-direction: column;
+    background: $bg-secondary;
+    &__search-box{
+        color:$bg-white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+    }
+    &__search-form{
+        display: flex;
+        flex-direction: column;
+    }
+    &__table{
+        background: $bg-white;
+        height: 250px;   //temporary
+        margin: 0 20px 20px;
+    }
+}
