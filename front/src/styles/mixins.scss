@@ -1,0 +1,16 @@
+@mixin styleButton {
+  background-color: $button-bg;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+@mixin error{
+  
+}
