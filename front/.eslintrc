@@ -6,9 +6,9 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "semi": "error",
+    "semi": "warn",
     "quotes": [
-      "error",
+      "warn",
       "single"
     ],
     "no-console": "warn",

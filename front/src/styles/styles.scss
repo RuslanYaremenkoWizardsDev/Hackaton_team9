@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    color:$bg-white;
   }
   
   .wrapper{
@@ -29,19 +30,22 @@
         
         &__sidebar{
             display: flex;
-            flex-direction: column;
             align-items: center;
-            // justify-content: space-between;
+        }
+        &__logo{
+          width: 180px;
         }
         &__buttons{
-            width: 40%;
+            width: 35%;
             display: flex;
             justify-content: space-between;
+            flex-direction: column;
         }
         &__linka{
             cursor: pointer;
             color:$bg-white;
             text-decoration: none;
+            margin: 10px 0;
         }
         &__linka:hover{
             -webkit-transform: scale(1.1);
@@ -91,30 +95,4 @@
             color: $button-bg;
         }
     }
-//   padding: 0;
-//   margin: 0;
-//   color: #e5e5e5;
-//   box-sizing: border-box;
-}
-
-// body{
-//   background: $bg-dark;
-// }
-
-// .wrapper{
-//   max-width: 1140px;
-//   margin: 0 auto;
-//   width: 100%;
-// }
-
-// .btn{
-//   @include styleButton
-// }
-
-// .btn:hover{
-//   -webkit-transform: scale(1.1);
-//     -ms-transform: scale(1.1);
-//     transform: scale(1.1);
-
-//     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-// }
+  }
