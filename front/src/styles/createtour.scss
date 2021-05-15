@@ -1,0 +1,31 @@
+.content-createtourn{
+    display: flex;
+    flex-direction: row;
+    background: $bg-secondary;
+    justify-content: space-around;
+    align-items: flex-start;
+    &__fields{
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        background: $bg-white;
+        margin: 20px;
+        padding: 20px;
+    }
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    &__span{
+    }
+    &__input{
+        background: $bg-secondary;
+    }
+    &__cup-grid{
+        width: 50%;
+        background:$bg-white;
+        height: 600px;
+        margin: 20px;
+    }
+}

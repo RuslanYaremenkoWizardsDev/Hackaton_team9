@@ -1,0 +1,20 @@
+.statistic{
+    display: flex;
+    flex-direction: column;
+    background: $bg-secondary;
+    &__players{
+        display: flex;
+        flex-direction: column;
+    }
+    &__title{
+        color:$bg-white;
+        padding: 20px;
+        text-align: center;
+    }
+    &__table{
+        height: 150px; //temporary
+        background: $bg-white;
+        margin: 0 20px 20px;
+
+    }
+}
