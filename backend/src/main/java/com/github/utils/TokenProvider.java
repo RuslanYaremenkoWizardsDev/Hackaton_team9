@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class TokenProvider {
 
-    private static final Logger log = LoggerFactory.getLogger(TokenProvider.class);
+//    private static final Logger log = LoggerFactory.getLogger(TokenProvider.class);
 
     private static final String SECRET_KEY = "Hackaton";
 
@@ -45,9 +45,9 @@ public class TokenProvider {
             return Base64.getEncoder()
                     .encodeToString(cipher.doFinal(str.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
-            log.error("Error while encrypting: " + e);
+//            log.error("Error while encrypting: " + e);
         }
-        log.info("Cipher token!");
+//        log.info("Cipher token!");
         return null;
     }
 
@@ -66,7 +66,7 @@ public class TokenProvider {
             cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
             newT = JsonHelper.fromFormat(new String(cipher.doFinal(Base64.getDecoder().decode(str))), Token.class).orElse(null);
         } catch (Exception e) {
-            log.error("Error while decrypting: " + e);
+//            log.error("Error while decrypting: " + e);
         }
         return newT;
     }
@@ -74,11 +74,11 @@ public class TokenProvider {
     public static boolean checkToken(String str) {
         Token token = decode(str);
         if(token == null){
-            log.info("Token is null!");
+//            log.info("Token is null!");
             return false;
         }
         if (token.getExpireIn() < new Date().getTime()){
-            log.info("Token expired!");
+//            log.info("Token expired!");
             return false;
         } else {
             return true;

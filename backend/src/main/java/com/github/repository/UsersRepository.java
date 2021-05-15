@@ -4,7 +4,6 @@ import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.utils.HibernateUtils;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,7 +15,7 @@ public class UsersRepository {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
-        } catch (Exception | HibernateException e) {
+        } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
