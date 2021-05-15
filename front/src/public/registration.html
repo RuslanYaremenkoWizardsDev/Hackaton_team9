@@ -12,32 +12,42 @@
   <div class="bg">
     <div class="wrapper">
       <div class="page">
-        <div class="logo-block"></div>
+        <div class="logo-block">
+          <img src="../assets/img/logo.png" alt="">
+          <span>Team Name</span>
+        </div>
         <div class="auth">
-          <h1>Registration</h1>
+          <div class="auth__header">
+            <h1>Registration</h1>
+            <hr>
+          </div>
           <div class="auth__field">
             <label for="">Login</label>
             <input type="text" id="login">
           </div>
           <div class="auth__field">
             <label for="">Password</label>
-            <input type="text" id="password">
+            <input type="password" id="password">
+            <img src="../assets/img/show_hide.svg" alt="hide" id="hidePass">
           </div>
           <div class="auth__field">
             <label for="">Confirm password</label>
-            <input type="text" id="confirmPass">
+            <input type="password" id="confirmPass">
+            <img src="../assets/img/show_hide.svg" alt="hide" id="hidePass">
           </div>
           <div class="auth__btns">
-            <button class="btn" id="signBtn">Registrate</button>
+            <button class="btn auth__btns-btn" id="signBtn">Registrate</button>
           </div>
 
           <div class=" auth__link">
-            <a href="#">Login as a guest</a>
             <a href="index.html">
               Sign in
             </a>
+            <a href="#">Login as a guest</a>
           </div>
-          <div class="auth__err" id="error"></div>
+          <div class="error-wrapper">
+            <div class="auth__err" id="error"></div>
+          </div>
         </div>
       </div>
 
