@@ -4,6 +4,7 @@ import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.utils.HibernateUtils;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,17 +17,12 @@ public class UsersRepository {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
-        } catch (Exception | HibernateException e) {
+        } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        UsersRepository usersRepository = new UsersRepository();
-        usersRepository.saveStudent(new User());
     }
 
     public User findByAuthDto(UserAuthorizationDto userAuthorizationDto){
@@ -40,12 +36,21 @@ public class UsersRepository {
     }
 
     public User findById(long id){
-//        return jdbcTemplate.findBy(
-//                "SELECT * FROM users WHERE id = ?",
-//                RowMappers.getCustomRowMapperUser(),
-//                id
-//        );
-        return null;
+        Session session = null;
+        User user = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            user =  session.load(User.class,
+                    id);
+            Hibernate.initialize(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return user;
     }
 
     public User insert(UserRegistrationDto userRegistrationDto){
@@ -84,6 +89,12 @@ public class UsersRepository {
 //                userRegistrationDto.getPhone(),
 //                userRegistrationDto.getLogin()
 //                );
+    }
+
+    public static void main(String[] args) {
+        UsersRepository usersRepository = new UsersRepository();
+        usersRepository.saveStudent(new User());
+        System.out.println(usersRepository.findById(1));
     }
 
 }
