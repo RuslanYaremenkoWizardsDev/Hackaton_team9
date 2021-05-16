@@ -5,7 +5,11 @@ import com.github.utils.HibernateUtils;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UsersRepository {
@@ -25,36 +29,37 @@ public class UsersRepository {
         return user;
     }
 
-    public User findByEmail(User user){
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            user =  session.load(User.class,
-                    user.getEmail());
+    public User findByEmail(User user) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<User> cr = cb.createQuery(User.class);
+            Root<User> root = cr.from(User.class);
+            cr.select(root).where(cb.equal(root.get("email"), user.getEmail()));
+            Query<User> query = session.createQuery(cr);
+            List<User> results = query.getResultList();
+            if (results.size() != 0) user = results.get(0);
+            else user = null;
             Hibernate.initialize(user);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+            return null;
         }
         return user;
     }
 
-    public User findByNickname(User user){
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            user =  session.load(User.class,
-                    user.getNickname());
+    public User findByNickname(User user) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<User> cr = cb.createQuery(User.class);
+            Root<User> root = cr.from(User.class);
+            cr.select(root).where(cb.equal(root.get("nickname"), user.getNickname()));
+            Query<User> query = session.createQuery(cr);
+            List<User> results = query.getResultList();
+            if (results.size() != 0) user = results.get(0);
+            else user = null;
             Hibernate.initialize(user);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
         }
         return user;
     }
@@ -65,7 +70,7 @@ public class UsersRepository {
         }
     }
 
-    public void update(User user){
+    public void update(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -79,7 +84,7 @@ public class UsersRepository {
         }
     }
 
-    public void delete(User user){
+    public void delete(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
