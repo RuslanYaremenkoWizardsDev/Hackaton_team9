@@ -46,11 +46,13 @@ public class UsersHandlers extends HttpServlet {
     @Override
     public void doOptions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setStatus(204);
+        setAccessHeaders(resp);
     }
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ServletOutputStream out = resp.getOutputStream();
+        setAccessHeaders(resp);
         String result = Optional.of(this.userControllers.auth(new UserAuthorizationDto())).orElseThrow(BadRequest::new);
         out.write(result.getBytes());
         out.flush();
@@ -59,7 +61,7 @@ public class UsersHandlers extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("DO POST");
+        setAccessHeaders(resp);
         String body = req.getReader().lines().collect(Collectors.joining());
         PrintWriter out = resp.getWriter();
         if (!req.getHeader("Content-Type").contains("application/json")) {
