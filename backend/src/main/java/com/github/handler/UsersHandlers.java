@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -52,33 +53,28 @@ public class UsersHandlers extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("DO GET");
-        setAccessHeaders(resp);
         PrintWriter out = resp.getWriter();
-        if (!req.getHeader("Content-Type").contains("application/json")) {
-            resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
-        } else {
-            String url = req.getRequestURI();
-            System.out.println(url);
-            if (url.contains("/account")) {
-                String token = req.getHeader("Authorization");
-                Token t = TokenProvider.decode(token);
-                if (Objects.isNull(t)) {
-                    resp.setStatus(400);
-                    out.write(JsonHelper.toFormat("Token is null").get());
+        String url = req.getRequestURI();
+        if (url.contains("/account")) {
+            String token = req.getHeader("Authorization");
+            System.out.println(token);
+            Token t = TokenProvider.decode(token);
+            if (Objects.isNull(t)) {
+                resp.setStatus(400);
+                out.write(JsonHelper.toFormat("Token is null").get());
+            } else {
+                long exp = t.getExpireIn();
+                if (exp > System.currentTimeMillis()) {
+                    User user = this.userControllers.findUser(t.getNickname());
+                    resp.setContentType("application/json");
+                    out.write(JsonHelper.toFormat(user).get());
                 } else {
-                    long exp = t.getExpireIn();
-                    if (exp > System.currentTimeMillis()) {
-                        User user = this.userControllers.findUser(t.getNickname());
-                        resp.setContentType("application/json");
-                        out.write(JsonHelper.toFormat(user).get());
-                    } else {
-                        resp.setStatus(400);
-                        out.write(JsonHelper.toFormat("Token is expired.").get());
-                    }
+                    resp.setStatus(400);
+                    out.write(JsonHelper.toFormat("Token is expired.").get());
                 }
-                out.flush();
-                out.close();
             }
+            out.flush();
+            out.close();
         }
     }
 
