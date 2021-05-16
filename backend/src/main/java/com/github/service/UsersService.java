@@ -36,7 +36,6 @@ public class UsersService implements IUserService{
 
     @Override
     public User findByNickname(User user) {
-
         return this.repository.findByNickname(user);
     }
 
