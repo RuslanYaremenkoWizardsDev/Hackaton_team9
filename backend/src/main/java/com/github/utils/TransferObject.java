@@ -38,7 +38,6 @@ public class TransferObject {
     }
 
     private static boolean isLegalUser(User user) {
-        Pattern pattern = Pattern.compile("[\\w\\d]{6,20}");
-        return user.getNickname().matches("[A-Za-z0-9]{6,20}") && user.getPassword().matches("[\\w\\d\\@\\!\\#\\$\\%\\^\\&\\*\\)\\(\\`\\'\"\\:\\;\\{\\}]{6,20}");
+        return user.getNickname().matches("[\\w\\d]{6,20}") && user.getPassword().matches("[\\w\\d\\@\\!\\#\\$\\%\\^\\&\\*\\)\\(\\`\\'\"\\:\\;\\{\\}]{6,20}");
     }
 }
