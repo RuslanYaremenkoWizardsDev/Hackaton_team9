@@ -22,15 +22,12 @@ export default function renderModal() {
     });
 }
 
-<<<<<<< HEAD
-=======
 export function renderDeleteModal() {
     let deleteAll = document.querySelector('.delete-btn');
     let searchBox = document.querySelector('.content-tournaments__search-box');
 
     deleteAll.addEventListener('click', (e) => {
         let modalBox = document.createElement('div');
->>>>>>> 4e8af4da7d62e167d21664bc1016fe38d8c4e599
 
         modalBox.innerHTML = modalDelete;
         searchBox.appendChild(modalBox);
@@ -44,7 +41,7 @@ export function renderDeleteModal() {
                 modalSettings.style.display = 'none';
             }
         });
-            console.log("here")
+        console.log("here")
 
     });
 }
