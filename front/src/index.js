@@ -22,3 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
     renderDeleteModal();
   }
 });
+
+
+
+
+
+// const body = {
+//   login: 'admin1234',
+//   password: 'admin1234',
+//   confirmPassword: 'admin1234'
+// };
+// fetch('http://hackatonteam9.herokuapp.com//registration', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(body)
+// })
+//   .then(data => data.json())
+//   .then(data => console.log(data));

@@ -40,5 +40,11 @@ export default class AuthHelp {
     }
     submit(url, this.body);
   }
+
+  showPass = () => {
+    // element.addEventListener('click', () => {
+    //   if (input.getAttribute('type') === 'password')
+    // });
+  }
 };
 

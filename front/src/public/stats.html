@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stats</title>
 </head>
+
 <body>
     <header class="header">
         <div class="header__settings">
@@ -31,18 +33,59 @@
     </header>
     <main class="main">
         <div class="statistic">
-           <div class="statistic__players">
-               <p class="statistic__title">Players</p>
-               <div class="statistic__table"></div>
-           </div>
-           <div class="statistic__tournaments">
-               <p class="statistic__title">Tournaments</p>
-               <div class="statistic__table"></div>
-           </div>
+            <div class="statistic__players">
+                <p class="statistic__title">Players</p>
+                <table class="statistic__players-table">
+                    <thead>
+                        <tr>
+                            <th class="content-tournaments__table-name">Name</th>
+                            <th class="content-tournaments__table-mode">Mode</th>
+                            <th class="content-tournaments__table-place">Place</th>
+                            <th class="content-tournaments__table-date">Start date</th>
+                            <th class="content-tournaments__table-date">Last reg date</th>
+                            <th class="content-tournaments__table-state">State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WorldCup</td>
+                            <td>ada</td>
+                            <td>Kharkiv</td>
+                            <td>12.04.2021 16.04</td>
+                            <td>10.04.2021 16.04</td>
+                            <td>InProgress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="statistic__tournaments">
+                <p class="statistic__title">Tournaments</p>
+                <table class="statistic__tournaments-table">
+                    <thead>
+                        <tr>
+                            <th class="content-tournaments__table-name">Name</th>
+                            <th class="content-tournaments__table-mode">Mode</th>
+                            <th class="content-tournaments__table-place">Place</th>
+                            <th class="content-tournaments__table-date">Start date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WorldCup</td>
+                            <td>ada</td>
+                            <td>Kharkiv</td>
+                            <td>12.04.2021 16.04</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     <footer class="footer">
-        <div class="footer__content">create for <a href="https://deveducation.com/" class="footer__link" target="_blank">dev<span style="color: orange;">{</span>education<span style="color: orange;">}</span></a></div>
+        <div class="footer__content">create for <a href="https://deveducation.com/" class="footer__link"
+                target="_blank">dev<span style="color: orange;">{</span>education<span
+                    style="color: orange;">}</span></a></div>
     </footer>
 </body>
+
 </html>

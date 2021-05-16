@@ -2,19 +2,40 @@
     display: flex;
     flex-direction: column;
     background: $bg-secondary;
+    padding: 5px;
     &__players{
         display: flex;
         flex-direction: column;
+        &-table{
+            @include tableStyle;
+            tr{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+                text-align: center;
+                td,th{
+                    @include tdStyle
+                }
+            }
+        }
     }
     &__title{
         color:$bg-white;
         padding: 20px;
         text-align: center;
     }
-    &__table{
-        height: 150px; //temporary
-        background: $bg-white;
-        margin: 0 20px 20px;
-
+    &__tournaments{
+        display: flex;
+        flex-direction: column;
+        &-table{
+            @include tableStyle;
+            tr{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                text-align: center;
+                td,th{
+                    @include tdStyle
+                }
+            }
+        }
     }
 }

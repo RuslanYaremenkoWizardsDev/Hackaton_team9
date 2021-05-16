@@ -4,7 +4,7 @@ export default function renderModal() {
     let settingsBtn = document.querySelector('.header__set-img');
     let settingsBox = document.querySelector('.header__settings');
 
-    settingsBtn.addEventListener('click', (e) => {
+    settingsBtn.addEventListener('click', () => {
         let modalBox = document.createElement('div');
 
         modalBox.innerHTML = modal;
@@ -13,12 +13,23 @@ export default function renderModal() {
 
         modalSettings.style.display = 'block';
         let modalClose = document.querySelector('.header__close');
+        const modalCancel = document.querySelector('.header__cancel');
+        const modalBg = document.querySelector('.header__modal');
 
-        modalClose.addEventListener('click', (e) => {
-            if (e.target.className == 'header__close') {
+        modalClose.addEventListener('click', () => {
+            modalSettings.style.display = 'none';
+        });
+
+        modalCancel.addEventListener('click', () => {
+            modalSettings.style.display = 'none';
+        });
+
+        modalBg.addEventListener('click', (e) => {
+            if (e.target === modalBg) {
                 modalSettings.style.display = 'none';
             }
         });
+
     });
 }
 
@@ -35,13 +46,21 @@ export function renderDeleteModal() {
 
         modalSettings.style.display = 'block';
         let modalClose = document.querySelector('.tableTop__close');
+        const modalBg = document.querySelector('.tableTop__modal');
+        const modalCancel = document.querySelector('.tableTop__cancel');
 
-        modalClose.addEventListener('click', (e) => {
-            if (e.target.className == 'tableTop__close') {
+        modalClose.addEventListener('click', () => {
+            modalSettings.style.display = 'none';
+        });
+
+        modalCancel.addEventListener('click', () => {
+            modalSettings.style.display = 'none';
+        });
+
+        modalBg.addEventListener('click', (e) => {
+            if (e.target === modalBg) {
                 modalSettings.style.display = 'none';
             }
         });
-        console.log("here")
-
     });
 }

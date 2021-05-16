@@ -1,5 +1,5 @@
 
-export const modal=`
+export const modal = `
     <div class="header__modal">
       <div class="header__modal-content">
         <div class="header__modal-head">
@@ -28,9 +28,9 @@ export const modal=`
           <div class="header__cancel btn">Cancel</div>
         </div>
       </div>
-    </div>`
+    </div>`;
 
-export const modalDelete= `
+export const modalDelete = `
   <div class="tableTop__modal">
     <div class="tableTop__modal-content">
       <div class="tableTop__heder-box">
@@ -43,4 +43,4 @@ export const modalDelete= `
         <div class="tableTop__cancel btn">Cancel</div>
       </div>
     </div>
-  </div>`
+  </div>`;

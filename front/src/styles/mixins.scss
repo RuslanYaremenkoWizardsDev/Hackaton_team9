@@ -10,3 +10,16 @@
     border: none;
     outline: none;
   }
+
+@mixin tableStyle{
+  border-collapse: collapse;
+  border-radius: $b-radius;
+}
+
+@mixin tdStyle{
+  border: 1px solid black;
+  padding: 4px 2px;
+  background: $bg-white;
+  color: $bg-dark;
+  font-size: 14px;
+}
