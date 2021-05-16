@@ -5,7 +5,6 @@ export default class AuthHelp {
     this.body = {
       login: null,
       password: null,
-      confirmPassword: null
     };
     this.isReg = isReg;
   }
@@ -41,10 +40,15 @@ export default class AuthHelp {
     submit(url, this.body);
   }
 
-  showPass = () => {
-    // element.addEventListener('click', () => {
-    //   if (input.getAttribute('type') === 'password')
-    // });
+  showPass = (element, input) => {
+    element.addEventListener('click', () => {
+      if (input.getAttribute('type') === 'password') {
+        input.setAttribute('type', 'text');
+      }
+      else if (input.getAttribute('type') === 'password') {
+        input.setAttribute('type', 'password');
+      }
+    });
   }
 };
 

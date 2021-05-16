@@ -1,5 +1,10 @@
-import { urls, validation, login, registration, renderModal, support } from './modules';
+import {
+  urls, validation, login, registration,
+  renderModal, support, translateAuth,
+  regTranslate, authTranslate, authIpt, regIpt
+} from './modules';
 import { renderDeleteModal } from './modules/mainPage/renderModal';
+import translateMain from './modules/mainPage/translateMain';
 import './styles/index.scss';
 
 
@@ -7,26 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = location.pathname;
   if (path === '/' || path === '/index.html') {
     validation(urls.auth, login);
+    translateAuth(authTranslate, authIpt);
   }
-  if (path === '/registration.html') {
+  else if (path === '/registration.html') {
+    translateAuth(regTranslate, regIpt);
     validation(urls.registr, registration, true);
   }
-  if (path === '/createtour.html') {
+  else if (path === '/createtour.html') {
     renderModal();
-    document.querySelector('.startDate').setAttribute("min",support.getDate(new Date));
-    document.querySelector('.lastDate').setAttribute("max",support.getDate(new Date));
+    document.querySelector('.startDate').setAttribute('min', support.getDate(new Date));
+    document.querySelector('.lastDate').setAttribute('max', support.getDate(new Date));
   }
-  if (path === '/stats.html') {
+  else if (path === '/stats.html') {
     renderModal();
   }
-  if (path === '/tournaments.html') {
+  else if (path === '/tournaments.html') {
     renderModal();
     renderDeleteModal();
+    translateMain();
   }
 });
 
 
-
+// fetchWithToken('/account').then(res => res.json()).then(data => console.log(data));
 
 
 // const body = {

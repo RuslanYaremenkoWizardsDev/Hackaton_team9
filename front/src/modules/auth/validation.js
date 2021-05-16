@@ -6,7 +6,7 @@ export default function validation(url, submit, isReg,) {
   const errTxt = document.querySelector('#error');
   // const eye = document.querySelectorAll('.hidePass');
 
-  const { changeBody, sendData } = new AuthHelp(isReg);
+  const { changeBody, sendData, showPass } = new AuthHelp(isReg);
 
   authBlock.addEventListener('input', (e) => {
     const id = e.target.getAttribute('id');
@@ -18,10 +18,5 @@ export default function validation(url, submit, isReg,) {
     if (id === 'signBtn') {
       sendData({ message, errTxt, submit, url });
     }
-    if (id === 'hidePass') {
-
-    }
   });
-
-
 }

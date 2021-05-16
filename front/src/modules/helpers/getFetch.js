@@ -8,3 +8,13 @@ export default function getFetch(url, method = 'GET', body = null) {
     }
   });
 }
+
+export function fetchWithToken(url, method = 'GET') {
+  return fetch(`http://hackatonteam9.herokuapp.com${url}`, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    }
+  });
+}

@@ -18,17 +18,17 @@
         </div>
         <div class="auth">
           <div class="auth__header">
-            <h1>Authorization</h1>
+            <h1 id="head">Authorization</h1>
             <hr>
           </div>
 
           <div class="auth__field">
-            <label for="">Login</label>
+            <label for="" placeholder="Enter login" id="logLabel">Login</label>
             <input type="text" id="login">
           </div>
           <div class="auth__field">
-            <label for="">Password</label>
-            <input class="pass" type="password" id="password">
+            <label for="" id="passLabel">Password</label>
+            <input class="pass" type="password" id="password" placeholder="Enter password">
             <img src="../assets/img/show_hide.svg" alt="hide" id="hidePass">
           </div>
 
@@ -37,10 +37,10 @@
           </div>
 
           <div class="auth__link">
-            <a href="registration.html">
+            <a href="registration.html" id="signUp">
               Sign up
             </a>
-            <a href="#">Login as a guest</a>
+            <a href="#" id="guest">Login as a guest</a>
           </div>
           <div class="error-wrapper">
             <div class="auth__err" id="error"></div>
