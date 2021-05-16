@@ -84,9 +84,7 @@ public class UsersHandlers extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     resp.addHeader("Authorization", result);
                     resp.setContentType("application/json");
-                    System.out.println(user.getRole());
                     out.write(JsonHelper.toFormat(user.getRole()).get());
-
                 } else {
                     resp.setStatus(403);
                 }

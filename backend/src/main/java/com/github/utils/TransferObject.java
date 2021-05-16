@@ -16,6 +16,7 @@ public class TransferObject {
                 user = new User(nickname, payload.getLogin(),payload.getPassword());
             } else {
                 user = new User (payload.getLogin(), payload.getPassword());
+                if(!isLegalUser(user)) throw new IllegalArgumentException("Illegal user");
             }
         }
         return user;
@@ -32,7 +33,12 @@ public class TransferObject {
         return user;
     }
 
-    public static boolean isEmailString(String login){
+    private static boolean isEmailString(String login){
         return Pattern.compile(".*@.*\\..*$").matcher(login).matches();
+    }
+
+    private static boolean isLegalUser(User user) {
+        Pattern pattern = Pattern.compile("[\\w\\d]{6,20}");
+        return user.getNickname().matches("[A-Za-z0-9]{6,20}") && user.getPassword().matches("[\\w\\d\\@\\!\\#\\$\\%\\^\\&\\*\\)\\(\\`\\'\"\\:\\;\\{\\}]{6,20}");
     }
 }
