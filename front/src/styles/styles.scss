@@ -12,6 +12,8 @@
 
   .btn{
     @include styleButton;
+    transition-duration: .1s;
+    // transition-delay: .5s;
   }
   
   .btn:hover{
