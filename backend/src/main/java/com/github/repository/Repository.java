@@ -17,6 +17,7 @@ public class Repository {
 
     public Tournament save(Tournament tournament) {
         Transaction transaction = null;
+        System.out.println(tournament);
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(tournament);

@@ -15,7 +15,6 @@ public class DataService implements IDataService {
     private final Repository repository;
 
     public DataService(Repository repository) {
-
         this.repository = repository;
     }
 
@@ -43,7 +42,6 @@ public class DataService implements IDataService {
 
     @Override
     public void update(User user) {
-
         this.repository.update(user);
     }
 

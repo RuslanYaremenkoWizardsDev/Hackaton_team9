@@ -211,18 +211,17 @@ public class Tournament {
     public String toString() {
         return "Tournament{" +
                 "tournament_id=" + tournament_id +
-                "tourName=" + tourName +
+                ", tourName='" + tourName + '\'' +
                 ", description='" + description + '\'' +
-                ", mode='" + mode + '\'' +
+                ", mode=" + mode +
                 ", place='" + place + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", lastRegistration=" + lastRegistration + '\'' +
+                ", startDate=" + startDate +
+                ", lastRegistration=" + lastRegistration +
                 ", tourLvl='" + tourLvl + '\'' +
-                ", playerQuantity='" + playerQuantity + '\'' +
-                ", scenario_for_tournament='" + scenario + '\'' +
-                ", invited_players='" + players + '\'' +
+                ", playerQuantity=" + playerQuantity +
+                ", scenario='" + scenario + '\'' +
+                ", players='" + players + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
-
 }
