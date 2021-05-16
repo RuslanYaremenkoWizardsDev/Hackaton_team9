@@ -1,55 +1,91 @@
 package com.github.entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tournaments")
 public class Tournament {
 
-    private int tournament_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "tournament_id")
+    private Long tournament_id;
 
-    private String tournament_name;
+    @Column(name = "tourName")
+    private String tourName;
 
-    private String tournament_description;
+    @Column(name = "description")
+    private String description;
 
+    @Column(name = "mode")
     private String mode;
 
+    @Column(name = "place")
     private String place;
 
-    private Date datestart;
+    @Column(name = "startDate")
+    private Date startDate;
 
-    private Date datepicker;
+    @Column(name = "lastRegistration")
+    private Date lastRegistration;
 
-    private String level_of_tournament;
+    @Column(name = "tourLvl")
+    private String tourLvl;
 
-    private int number_of_participants;
 
-    private String scenario_for_tournament;
+    @Column(name = "playerQuantity")
+    private int playerQuantity;
 
-    private String invited_players;
+    @Column(name = "scenario")
+    private String scenario;
 
-    public int getTournament_id() {
+    @Column(name = "players")
+    private String players;
+
+    public Tournament(Long tournament_id, String tourName, String description,
+                      String mode, String place, Date startDate, Date lastRegistration,
+                      String tourLvl, int playerQuantity, String scenario, String players) {
+        this.tournament_id = tournament_id;
+        this.tourName = tourName;
+        this.description = description;
+        this.mode = mode;
+        this.place = place;
+        this.startDate = startDate;
+        this.lastRegistration = lastRegistration;
+        this.tourLvl = tourLvl;
+        this.playerQuantity = playerQuantity;
+        this.scenario = scenario;
+        this.players = players;
+    }
+
+    public Tournament() {
+
+    }
+
+    public Long getTournament_id() {
         return tournament_id;
     }
 
-    public void setTournament_id(int tournament_id) {
+    public void setTournament_id(Long tournament_id) {
         this.tournament_id = tournament_id;
     }
 
-
-    public String getTournament_name() {
-        return tournament_name;
+    public String getTourName() {
+        return tourName;
     }
 
-    public void setTournament_name(String tournament_name) {
-        this.tournament_name = tournament_name;
+    public void setTourName(String tourName) {
+        this.tourName = tourName;
     }
 
-    public String getTournament_description() {
-        return tournament_description;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTournament_description(String tournament_description) {
-        this.tournament_description = tournament_description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getMode() {
@@ -68,52 +104,52 @@ public class Tournament {
         this.place = place;
     }
 
-    public Date getDatestart() {
-        return datestart;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDatestart(Date datestart) {
-        this.datestart = datestart;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getDatepicker() {
-        return datepicker;
+    public Date getLastRegistration() {
+        return lastRegistration;
     }
 
-    public void setDatepicker(Date datepicker) {
-        this.datepicker = datepicker;
+    public void setLastRegistration(Date lastRegistration) {
+        this.lastRegistration = lastRegistration;
     }
 
-    public String getLevel_of_tournament() {
-        return level_of_tournament;
+    public String getTourLvl() {
+        return tourLvl;
     }
 
-    public void setLevel_of_tournament(String level_of_tournament) {
-        this.level_of_tournament = level_of_tournament;
+    public void setTourLvl(String tourLvl) {
+        this.tourLvl = tourLvl;
     }
 
-    public int getNumber_of_participants() {
-        return number_of_participants;
+    public int getPlayerQuantity() {
+        return playerQuantity;
     }
 
-    public void setNumber_of_participants(int number_of_participants) {
-        this.number_of_participants = number_of_participants;
+    public void setPlayerQuantity(int playerQuantity) {
+        this.playerQuantity = playerQuantity;
     }
 
-    public String getScenario_for_tournament() {
-        return scenario_for_tournament;
+    public String getScenario() {
+        return scenario;
     }
 
-    public void setScenario_for_tournament(String scenario_for_tournament) {
-        this.scenario_for_tournament = scenario_for_tournament;
+    public void setScenario(String scenario) {
+        this.scenario = scenario;
     }
 
-    public String getInvited_players() {
-        return invited_players;
+    public String getPlayers() {
+        return players;
     }
 
-    public void setInvited_players(String invited_players) {
-        this.invited_players = invited_players;
+    public void setPlayers(String players) {
+        this.players = players;
     }
 
     @Override
@@ -121,38 +157,39 @@ public class Tournament {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tournament tournament = (Tournament) o;
-        return Objects.equals(tournament_name, tournament.tournament_name) &&
-                Objects.equals(tournament_description, tournament.tournament_description) &&
+        return Objects.equals(tourName, tournament.tourName) &&
+                Objects.equals(description, tournament.description) &&
                 Objects.equals(mode, tournament.mode) &&
                 Objects.equals(place, tournament.place) &&
-                Objects.equals(datestart, tournament.datestart) &&
-                Objects.equals(datepicker, tournament.datepicker) &&
-                Objects.equals(level_of_tournament, tournament.level_of_tournament) &&
-                Objects.equals(number_of_participants, tournament.number_of_participants) &&
-                Objects.equals(scenario_for_tournament, tournament.scenario_for_tournament) &&
-                Objects.equals(invited_players, tournament.invited_players);
+                Objects.equals(startDate, tournament.startDate) &&
+                Objects.equals(lastRegistration, tournament.lastRegistration) &&
+                Objects.equals(tourLvl, tournament.tourLvl) &&
+                Objects.equals(playerQuantity, tournament.playerQuantity) &&
+                Objects.equals(scenario, tournament.scenario) &&
+                Objects.equals(players, tournament.players);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tournament_name, tournament_description,
-                mode, place, datestart, datepicker, level_of_tournament,
-                number_of_participants, scenario_for_tournament, invited_players);
+        return Objects.hash(tourName, description,
+                mode, place, startDate, lastRegistration, tourLvl,
+                playerQuantity, scenario, players);
     }
 
     @Override
     public String toString() {
         return "Tournament{" +
-                "tournament_name=" + tournament_name +
-                ", tournament_description='" + tournament_description + '\'' +
+                "tournament_id=" + tournament_id +
+                "tourName=" + tourName +
+                ", description='" + description + '\'' +
                 ", mode='" + mode + '\'' +
                 ", place='" + place + '\'' +
-                ", datestart='" + datestart + '\'' +
-                ", datepicker=" + datepicker + '\'' +
-                ", level_of_tournament='" + level_of_tournament + '\'' +
-                ", number_of_participants='" + number_of_participants + '\'' +
-                ", scenario_for_tournament='" + scenario_for_tournament + '\'' +
-                ", invited_players='" + invited_players + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", lastRegistration=" + lastRegistration + '\'' +
+                ", tourLvl='" + tourLvl + '\'' +
+                ", playerQuantity='" + playerQuantity + '\'' +
+                ", scenario_for_tournament='" + scenario + '\'' +
+                ", invited_players='" + players + '\'' +
                 '}';
     }
 
