@@ -1,6 +1,7 @@
 package com.github.handler;
 
 import com.github.controllers.UserControllers;
+import com.github.dto.TournamentCreationDto;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
@@ -120,6 +121,19 @@ public class UsersHandlers extends HttpServlet {
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.reg(payload);
+                if (status) {
+                    resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+                } else {
+                    System.out.println("BAD REQ");
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
+            }
+
+            if (url.contains("/createtournament")) {
+                System.out.println("Create");
+                TournamentCreationDto payload = JsonHelper.fromFormat(body, TournamentCreationDto.class)
+                        .orElseThrow(BadRequest::new);
+                boolean status = this.userControllers.createTournament(payload);
                 if (status) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                 } else {

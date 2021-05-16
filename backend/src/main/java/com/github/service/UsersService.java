@@ -1,6 +1,7 @@
 package com.github.service;
 
 import com.github.controllers.UserControllers;
+import com.github.entity.Tournament;
 import com.github.entity.User;
 import com.github.repository.UsersRepository;
 import org.slf4j.Logger;
@@ -49,6 +50,10 @@ public class UsersService implements IUserService{
     @Override
     public void delete(User user) {
         this.repository.delete(user);
+    }
+
+    public Tournament createTournament(Tournament tournament) {
+        return this.repository.save(tournament);
     }
 
 
