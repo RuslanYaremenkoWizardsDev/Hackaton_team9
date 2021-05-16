@@ -21,11 +21,7 @@ export default function renderModal(){
         })
     });
 
-    modalClose.addEventListener('click',(e)=>{
-        if (e.target.className == "header__close"){
-        modalSettings.style.display = 'none';
-        }
-    })
+
 
 }
 
