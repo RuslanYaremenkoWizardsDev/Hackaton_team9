@@ -44,6 +44,9 @@ public class Tournament {
     @Column(name = "players")
     private String players;
 
+    @Column(name = "status")
+    private String status;
+
     public Tournament(Long tournament_id, String tourName, String description,
                       String mode, String place, Date startDate, Date lastRegistration,
                       String tourLvl, int playerQuantity, String scenario, String players) {
@@ -58,6 +61,7 @@ public class Tournament {
         this.playerQuantity = playerQuantity;
         this.scenario = scenario;
         this.players = players;
+        this.status= status;
     }
 
     public Tournament() {
@@ -166,14 +170,23 @@ public class Tournament {
                 Objects.equals(tourLvl, tournament.tourLvl) &&
                 Objects.equals(playerQuantity, tournament.playerQuantity) &&
                 Objects.equals(scenario, tournament.scenario) &&
-                Objects.equals(players, tournament.players);
+                Objects.equals(players, tournament.players)&&
+                Objects.equals(status, tournament.status);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(tourName, description,
                 mode, place, startDate, lastRegistration, tourLvl,
-                playerQuantity, scenario, players);
+                playerQuantity, scenario, players,status);
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -190,6 +203,7 @@ public class Tournament {
                 ", playerQuantity='" + playerQuantity + '\'' +
                 ", scenario_for_tournament='" + scenario + '\'' +
                 ", invited_players='" + players + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 
