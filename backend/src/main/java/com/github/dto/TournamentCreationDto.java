@@ -10,7 +10,7 @@ public class TournamentCreationDto {
 
     private String description;
 
-    private boolean mode;
+    private String mode;
 
     private String place;
 
@@ -31,7 +31,7 @@ public class TournamentCreationDto {
     public TournamentCreationDto() {
     }
 
-    public TournamentCreationDto(String tourName, String description, boolean mode, String place, Date startDate, Date lastRegistration, String tourLvl, int playerQuantity, String scenario, String players) {
+    public TournamentCreationDto(String tourName, String description, String mode, String place, Date startDate, Date lastRegistration, String tourLvl, int playerQuantity, String scenario, String players) {
         this.tourName = tourName;
         this.description = description;
         this.mode = mode;
@@ -100,14 +100,6 @@ public class TournamentCreationDto {
         this.description = description;
     }
 
-    public boolean isMode() {
-        return mode;
-    }
-
-    public void setMode(boolean mode) {
-        this.mode = mode;
-    }
-
     public String getPlace() {
         return place;
     }
@@ -170,5 +162,13 @@ public class TournamentCreationDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 }

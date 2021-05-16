@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tournaments2")
+@Table(name = "tournament2")
 public class Tournament {
 
     @Id
@@ -13,28 +13,28 @@ public class Tournament {
     @Column(name = "tournament_id")
     private Long tournament_id;
 
-    @Column(name = "tourName")
+    @Column(name = "tour_name")
     private String tourName;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "mode")
-    private boolean mode;
+    private String mode;
 
     @Column(name = "place")
     private String place;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private Long startDate;
 
-    @Column(name = "lastRegistration")
+    @Column(name = "last_registration")
     private Long lastRegistration;
 
-    @Column(name = "tourLvl")
+    @Column(name = "tour_level")
     private String tourLvl;
 
-    @Column(name = "playerQuantity")
+    @Column(name = "player_quantity")
     private int playerQuantity;
 
     @Column(name = "scenario")
@@ -46,25 +46,14 @@ public class Tournament {
     @Column(name = "status")
     private String status;
 
-    public Tournament(Long tournament_id, String tourName, String description,
-                      boolean mode, String place, Date startDate, Date lastRegistration,
-                      String tourLvl, int playerQuantity, String scenario, String players, String status) {
-        this.tournament_id = tournament_id;
-        this.tourName = tourName;
-        this.description = description;
-        this.mode = mode;
-        this.place = place;
-        this.startDate = startDate.getTime();
-        this.lastRegistration = lastRegistration.getTime();
-        this.tourLvl = tourLvl;
-        this.playerQuantity = playerQuantity;
-        this.scenario = scenario;
-        this.players = players;
-        this.status= status;
+
+
+    public Tournament() {
+
     }
-    public Tournament(String tourName, String description,
-                      boolean mode, String place, Long startDate, Long lastRegistration,
-                      String tourLvl, int playerQuantity, String scenario, String players, String status) {
+
+    public Tournament(Long tournament_id, String tourName, String description, String mode, String place, Long startDate, Long lastRegistration, String tourLvl, int playerQuantity, String scenario, String players, String status) {
+        this.tournament_id = tournament_id;
         this.tourName = tourName;
         this.description = description;
         this.mode = mode;
@@ -75,11 +64,21 @@ public class Tournament {
         this.playerQuantity = playerQuantity;
         this.scenario = scenario;
         this.players = players;
-        this.status= status;
+        this.status = status;
     }
 
-    public Tournament() {
-
+    public Tournament(String tourName, String description, String mode, String place, Long startDate, Long lastRegistration, String tourLvl, int playerQuantity, String scenario, String players, String status) {
+        this.tourName = tourName;
+        this.description = description;
+        this.mode = mode;
+        this.place = place;
+        this.startDate = startDate;
+        this.lastRegistration = lastRegistration;
+        this.tourLvl = tourLvl;
+        this.playerQuantity = playerQuantity;
+        this.scenario = scenario;
+        this.players = players;
+        this.status = status;
     }
 
     public Long getTournament_id() {
@@ -106,13 +105,7 @@ public class Tournament {
         this.description = description;
     }
 
-    public boolean getMode() {
-        return mode;
-    }
 
-    public void setMode(boolean mode) {
-        this.mode = mode;
-    }
 
     public String getPlace() {
         return place;
@@ -120,10 +113,6 @@ public class Tournament {
 
     public void setPlace(String place) {
         this.place = place;
-    }
-
-    public boolean isMode() {
-        return mode;
     }
 
     public Long getStartDate() {
@@ -225,4 +214,11 @@ public class Tournament {
                 '}';
     }
 
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 }

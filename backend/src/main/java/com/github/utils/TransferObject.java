@@ -14,7 +14,7 @@ public class TransferObject {
         Tournament tournament = new Tournament(
                 tournamentCreationDto.getTourName(),
                 tournamentCreationDto.getDescription(),
-                tournamentCreationDto.isMode(),
+                tournamentCreationDto.getMode(),
                 tournamentCreationDto.getPlace(),
                 tournamentCreationDto.getStartDate(),
                 tournamentCreationDto.getLastRegistration(),

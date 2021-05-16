@@ -111,7 +111,7 @@ public class Handler extends HttpServlet {
                 }
             }
             if (url.contains("/createtournament")) {
-                checkTokenInRequest(req, resp);
+//                checkTokenInRequest(req, resp);
                 TournamentCreationDto payload = JsonHelper.fromFormat(body, TournamentCreationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.createTournament(payload);
