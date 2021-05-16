@@ -2,7 +2,7 @@ import {
   urls, validation, login, registration,
   renderModal, support, translateAuth,
   regTranslate, authTranslate, authIpt, regIpt, translateTour, tourPlacholder,
-  translateStats, createIpt, createText
+  translateStats, createIpt, createText, addTours
 } from './modules';
 import { renderDeleteModal } from './modules/mainPage/renderModal';
 import translateMain from './modules/mainPage/translateMain';
@@ -33,27 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderModal();
     renderDeleteModal();
     translateMain(translateTour, tourPlacholder);
+    addTours();
   }
 });
 
 
 // fetchWithToken('/account').then(res => res.json()).then(data => console.log(data));
-
-
-const body = {
-  login: 'admin1234',
-  password: 'admin1234',
-  // confirmPassword: 'admin1234'
-};
-fetch('http://hackatonteam9.herokuapp.com/auth', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(body)
-})
-  .then(data => {
-    console.log(data.headers.get('Authorization'));
-    data.json();
-  })
-  .then(data => console.log(data));

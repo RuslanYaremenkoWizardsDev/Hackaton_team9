@@ -1,0 +1,64 @@
+[
+  {
+    "tourName": "ChampionShip3123",
+    "description": "saassasaddas",
+    "mode": "cup",
+    "place": "Kharkiv",
+    "startDate": "date",
+    "lastRegistration": "date",
+    "tourLvl": "Middle",
+    "playerQuantity": "32",
+    "scenario": "one-match-confrontation",
+    "players": [
+      "user1",
+      "user2"
+    ]
+  },
+  {
+    "tourName": "ChampionShip",
+    "description": "saassdas",
+    "mode": "cup",
+    "place": "Kharkiv",
+    "startDate": "date",
+    "lastRegistration": "date",
+    "tourLvl": "Middle",
+    "playerQuantity": "32",
+    "scenario": "one-match-confrontation",
+    "players": [
+      "user1",
+      "user2"
+    ]
+  },
+  {
+    "tourName": "ChampionShip",
+    "description": "saassdas",
+    "mode": "cup",
+    "place": "Kharkiv",
+    "startDate": "date",
+    "lastRegistration": "date",
+    "tourLvl": "Middle",
+    "playerQuantity": "32",
+    "scenario": "one-match-confrontation",
+    "players": [
+      "user1",
+      "user2"
+    ]
+  },
+  {
+    "tourName": "ChampionShip",
+    "description": "saassdas",
+    "mode": "cup",
+    "place": "Kharkiv",
+    "startDate": "date",
+    "lastRegistration": "date",
+    "tourLvl": "Middle",
+    "playerQuantity": "32",
+    "scenario": "one-match-confrontation",
+    "players": [
+      "user1",
+      "user2",
+      "user3",
+      "user4"
+    ]
+  }
+]

@@ -13,10 +13,12 @@ import renderDeleteModal from './mainPage/renderModal';
 import { modal } from './helpers/modal';
 import { modalDelete } from './helpers/modal';
 import translateAuth from './auth/translateAuth';
+import addTours from './mainPage/addTours';
 
 
 export {
-  validation, getFetch, login, registration, renderModal, renderDeleteModal, translateAuth
+  validation, getFetch, login, registration, renderModal,
+  renderDeleteModal, translateAuth, addTours
 };
 
 export {
