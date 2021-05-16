@@ -1,31 +1,56 @@
 package com.github.entity;
 
+import com.github.dto.UserAuthorizationDto;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name="users")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    private Role role;
-
+    @Column (name = "nickname")
     private String nickname;
 
+    @Column (name = "email")
     private String email;
 
+    @Column (name = "password")
     private String password;
 
+    @Column (name = "city")
     private String city;
 
+    @Column (name = "age")
     private int age;
 
+    @Column (name = "hobby")
     private String hobby;
 
+    @Column (name = "avatar")
     private String avatar;
 
+    @Column (name = "secretKey")
     private String secretKey;
 
-    public User(String email, String password) {
+    @Column (name = "role")
+    private Role role;
+
+    public User() {
+    }
+
+    public User(String nickname, String email, String password) {
+        this.nickname = nickname;
         this.email = email;
+        this.password = password;
+    }
+
+    public User(String nickname, String password) {
+        this.nickname = nickname;
         this.password = password;
     }
 
@@ -130,10 +155,11 @@ public class User {
         return Objects.hash(role, nickname, email, password, city, age, hobby, avatar, secretKey);
     }
 
+
     @Override
     public String toString() {
         return "User{" +
-                "role=" + role +
+                "id=" + id +
                 ", nickname='" + nickname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
@@ -142,6 +168,7 @@ public class User {
                 ", hobby='" + hobby + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", secretKey='" + secretKey + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

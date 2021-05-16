@@ -86,7 +86,7 @@ public class UsersHandlers extends HttpServlet {
                 System.out.println("REG");
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
-                this.userControllers.registration(payload);
+                this.userControllers.reg(payload);
                 resp.setStatus(HttpServletResponse.SC_ACCEPTED);
             } else {
                 System.out.println("BAD REQ");

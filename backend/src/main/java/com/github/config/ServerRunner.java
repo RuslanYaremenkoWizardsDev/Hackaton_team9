@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public class ServerRunner {
 
-    private final Logger logger = LoggerFactory.getLogger(ServerRunner.class);
+//    private final Logger logger = LoggerFactory.getLogger(ServerRunner.class);
 
     private final Tomcat tomcat;
 
@@ -24,7 +24,7 @@ public class ServerRunner {
             this.tomcat.start();
             this.tomcat.getServer().await();
         } catch (LifecycleException e) {
-            logger.warn("Enter {}", e.getMessage());
+//            logger.warn("Enter {}", e.getMessage());
         }
     }
 

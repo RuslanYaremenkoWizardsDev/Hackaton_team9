@@ -4,16 +4,20 @@ import com.github.dto.UserRegistrationDto;
 import com.github.dto.UserAuthorizationDto;
 import com.github.entity.User;
 
+import java.util.List;
+
 public interface IUserService {
 
-    User findById(long id);
+    User create(User user);
 
-    User findByAuth(UserAuthorizationDto auth);
+    List<User> read();
 
-    User insert(UserRegistrationDto userRegistrationDto);
+    User findByNickname(User user);
 
-    void delete(UserRegistrationDto userRegistrationDto);
+    User findByEmail(User user);
 
-    User update(UserRegistrationDto userRegistrationDto);
+    void update(User user);
+
+    void delete(User user);
 
 }
