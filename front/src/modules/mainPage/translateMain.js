@@ -1,23 +1,31 @@
-import { support, translateTour, tourPlacholder } from '..';
+import { support } from '..';
 const { lsGet, lsSet } = support;
-export default function translateMain() {
+export default function translateMain(text, ipt) {
   if (!lsGet('lang')) {
     lsSet('lang', 'en');
   }
-  translate();
+  translate(text, ipt);
   const langSelect = document.querySelector('#lang');
+  langSelect.value = lsGet('lang');
 
   langSelect.addEventListener('change', (e) => {
     lsSet('lang', e.target.value);
-    translate();
+    translate(text, ipt);
   });
 }
-function translate() {
+
+function translate(text, ipt) {
   const lang = lsGet('lang');
-  for (const key in translateTour) {
-    document.getElementById(key).textContent = translateTour[key][lang];
+  if (lang === 'ar') {
+    document.body.style.direction = 'rtl';
   }
-  for (const key in tourPlacholder) {
-    document.getElementById(key).setAttribute('placeholder', tourPlacholder[key][lang]);
+  else {
+    document.body.style.direction = 'ltr';
+  }
+  for (const key in text) {
+    document.getElementById(key).textContent = text[key][lang];
+  }
+  for (const key in ipt) {
+    document.getElementById(key).setAttribute('placeholder', ipt[key][lang]);
   }
 }

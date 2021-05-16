@@ -147,7 +147,7 @@ export const
   },
   loginTranslate = {
     ...authTranslate,
-    head: {
+    title: {
       en: 'AUTHORIZATION',
       ru: 'Авторизация',
       ar: 'تفويض'
@@ -204,5 +204,149 @@ export const
       en: 'Confirm password',
       ru: 'Подтвердите пароль',
       ar: 'تأكيد كلمة المرور'
+    }
+  },
+  translateStats = {
+    ...header,
+    name: {
+      en: 'Name',
+      ru: 'Имя',
+      ar: 'اسم'
+    },
+    games: {
+      en: 'Games',
+      ru: 'Игры',
+      ar: 'ألعاب'
+    },
+    wins: {
+      en: 'Wins',
+      ru: 'Победы',
+      ar: 'يفوز'
+    },
+    draws: {
+      en: 'Draws',
+      ru: 'Ничьи',
+      ar: 'رسم'
+    },
+    loses: {
+      en: 'Loses',
+      ru: 'Поражения',
+      ar: 'يخسر'
+    },
+    cupWins: {
+      en: 'Cup Wins',
+      ru: 'Побед в кубке',
+      ar: 'الكأس يفوز'
+    },
+    tourNum: {
+      en: 'Number of tournaments',
+      ru: 'Количество турниров',
+      ar: 'عدد البطولات'
+    },
+    active: {
+      en: 'Active',
+      ru: 'Активных',
+      ar: 'قوي'
+    },
+    finished: {
+      en: 'Finished',
+      ru: 'Законченых',
+      ar: 'ممتلىء'
+    },
+    notStart: {
+      en: 'Not started',
+      ru: 'Не начавшихся',
+      ar: 'لا تبدأ'
+    }
+  },
+  createText = {
+    ...header,
+    tourName: {
+      en: 'Name of tournament',
+      ru: 'Название турнира',
+      ar: 'اسم البطولة'
+    }, tourDescr: {
+      en: 'Tournament description',
+      ru: 'Описание турнира',
+      ar: 'وصف البطولة'
+    }, mode: {
+      en: 'Mode',
+      ru: 'Режим',
+      ar: 'الوضع'
+    },
+    modeCup: {
+      en: 'cup',
+      ru: 'кубок',
+      ar: 'فنجان'
+    },
+    place: {
+      en: 'Place',
+      ru: 'Место',
+      ar: 'مكان'
+    }, startDate: {
+      en: 'Start date',
+      ru: 'Дата начала',
+      ar: 'تاريخ البداية'
+    },
+    lastDate: {
+      en: 'Last registration date',
+      ru: 'Дата конца регистрации',
+      ar: 'تاريخ انتهاء التسجيل'
+    },
+    lvl: {
+      en: 'Level of tournament',
+      ru: 'Уровень турнира',
+      ar: 'مستوى البطولة'
+    }, advanced: {
+      en: 'advanced',
+      ru: 'продвинутый',
+      ar: 'متطور'
+    }, middle: {
+      en: 'middle',
+      ru: 'средний',
+      ar: 'مركز'
+    }, begginer: {
+      en: 'begginer',
+      ru: 'начальный',
+      ar: 'ابتدائي'
+    }, participants: {
+      en: 'Number of participants',
+      ru: 'Кол-во участников',
+      ar: 'عدد المشاركين'
+    },
+    scenario: {
+      en: 'Scenario',
+      ru: 'Сценарий',
+      ar: 'سيناريو'
+    },
+    one: {
+      en: 'one-match confrontation',
+      ru: 'одна игра',
+      ar: 'لعبة واحدة'
+    },
+    two: {
+      en: 'two-match confrontation',
+      ru: 'две игры',
+      ar: 'لعبتين'
+    },
+    create: {
+      en: 'Create',
+      ru: 'Создать',
+      ar: 'يخلق'
+    }
+  },
+  createIpt = {
+    tourNameIpt: {
+      en: 'Enter the cup name...',
+      ru: 'Введите название кубка...',
+      ar: 'أدخل اسم الكأس'
+    }, tourDescrIpt: {
+      en: 'Enter the cup description...',
+      ru: 'Введите описание',
+      ar: 'أدخل وصفًا'
+    }, placeIpt: {
+      en: 'Enter the cup location...',
+      ru: 'Введите место проведения',
+      ar: 'إدخال الدولة'
     }
   };

@@ -11,40 +11,37 @@
 <body>
     <header class="header">
         <div class="header__settings">
-            <select>
+            <select id="lang">
                 <option value="en">en</option>
                 <option value="ru">ru</option>
                 <option value="ar">ar</option>
             </select>
-            <!-- <select>
-                <option>Dark</option>
-                <option>Light</option>
-            </select> -->
+
             <img src="../assets/w450h4001385925286Settings.png" class="header__set-img">
-            <button class="btn">Log out</button>
+            <button class="btn" id='logOut'>Log out</button>
         </div>
         <div class="header__sidebar">
             <img class="header__logo" src="../assets/unnamed.png" width="100px">
             <div class="header__buttons">
-                <a href="tournaments.html" class="header__linka">Tournaments</a>
-                <a href="createtour.html" class="header__linka">Create tournament</a>
-                <a href="stats.html" class="header__linka">Stats</a>
+                <a href="tournaments.html" class="header__linka" id="tournaments">Tournaments</a>
+                <a href="createtour.html" class="header__linka" id="createTour">Create tournament</a>
+                <a href="stats.html" class="header__linka" id="stats">Stats</a>
             </div>
         </div>
     </header>
     <main class="main">
         <div class="statistic">
             <div class="statistic__players">
-                <p class="statistic__title">Players</p>
+                <p class="statistic__title" id="players">Players</p>
                 <table class="statistic__players-table">
                     <thead>
                         <tr>
-                            <th class="content-tournaments__table-name">Name</th>
-                            <th class="content-tournaments__table-mode">Mode</th>
-                            <th class="content-tournaments__table-place">Place</th>
-                            <th class="content-tournaments__table-date">Start date</th>
-                            <th class="content-tournaments__table-date">Last reg date</th>
-                            <th class="content-tournaments__table-state">State</th>
+                            <th class="content-tournaments__table-name" id="name">Name</th>
+                            <th class="content-tournaments__table-mode" id="games">Games</th>
+                            <th class="content-tournaments__table-place" id="wins">Wins</th>
+                            <th class="content-tournaments__table-date" id="draws">Draws</th>
+                            <th class="content-tournaments__table-date" id="loses">Loses</th>
+                            <th class="content-tournaments__table-state" id="cupWins">Cup Wins</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,14 +57,14 @@
                 </table>
             </div>
             <div class="statistic__tournaments">
-                <p class="statistic__title">Tournaments</p>
+                <p class="statistic__title" id="tournaments">Tournaments</p>
                 <table class="statistic__tournaments-table">
                     <thead>
                         <tr>
-                            <th class="content-tournaments__table-name">Name</th>
-                            <th class="content-tournaments__table-mode">Mode</th>
-                            <th class="content-tournaments__table-place">Place</th>
-                            <th class="content-tournaments__table-date">Start date</th>
+                            <th class="content-tournaments__table-name" id="tourNum">Number of tournaments</th>
+                            <th class="content-tournaments__table-mode" id="active">Active</th>
+                            <th class="content-tournaments__table-place" id="finished">Finished</th>
+                            <th class="content-tournaments__table-date" id="notStart">Not started</th>
                         </tr>
                     </thead>
                     <tbody>

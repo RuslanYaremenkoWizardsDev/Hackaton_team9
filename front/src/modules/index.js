@@ -1,7 +1,11 @@
 import validation from './auth/validation';
 import getFetch from './helpers/getFetch';
 import urls from './helpers/urls';
-import { message, translateTour, tourPlacholder, regTranslate, authTranslate, authIpt, regIpt } from './helpers/constants';
+import {
+  message, translateTour, tourPlacholder,
+  regTranslate, authTranslate, authIpt, regIpt, translateStats,
+  createIpt, createText
+} from './helpers/constants';
 import { support } from './helpers/support';
 import { login, registration } from './auth/auth';
 import renderModal from './mainPage/renderModal';
@@ -17,6 +21,7 @@ export {
 
 export {
   urls, message, support, modal, modalDelete, translateTour,
-  tourPlacholder, regTranslate, authTranslate, authIpt, regIpt
+  tourPlacholder, regTranslate, authTranslate, authIpt, regIpt,
+  translateStats, createIpt, createText
 };
 
