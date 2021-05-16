@@ -6,7 +6,10 @@ export const modal = `
           <p class="header__head-text" id="modalHead">My account</p>
           <span class="header__close">&times;</span>
         </div>
-        <img src="../../assets/1-36-1024x1024.jpg" class="header__modal-avatar">
+        <div class="header__avatar">
+          <img src="../../assets/1-36-1024x1024.jpg" class="header__modal-avatar">
+          <div class="header__avatar-add">+</div>
+        </div>
         <p id="modalDescr" class="header__modal-text">Below you can change your login and/or password</p>
         <div class="header__login">
            <p class="header__input-text" id="modalLogin">Login</p>
