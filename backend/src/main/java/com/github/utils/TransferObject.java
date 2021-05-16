@@ -8,6 +8,12 @@ import java.util.regex.Pattern;
 
 public class TransferObject {
 
+    public static User toUser(String nickname) {
+        User user = new User();
+        user.setNickname(nickname);
+        return user;
+    }
+
     public static User toUser(UserRegistrationDto payload) {
         User user = null;
         if (payload.getPassword().equals(payload.getConfirmPassword())){

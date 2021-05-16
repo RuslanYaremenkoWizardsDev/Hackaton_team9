@@ -1,12 +1,11 @@
 package com.github.controllers;
 
 
-import com.github.dto.UserRegistrationDto;
-import com.github.exceptions.CryptoException;
-import com.github.service.UsersService;
 import com.github.dto.UserAuthorizationDto;
+import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.payload.Token;
+import com.github.service.UsersService;
 import com.github.utils.TokenProvider;
 import com.github.utils.TransferObject;
 
@@ -39,12 +38,7 @@ public class UserControllers {
     }
 
     public boolean reg(UserRegistrationDto payload) {
-        User user;
-        try {
-            user = TransferObject.toUser(payload);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
+        User user = TransferObject.toUser(payload);
         if (Objects.isNull(this.usersService.findByNickname(user)) &&
                 Objects.isNull(this.usersService.findByEmail(user))) {
             this.usersService.create(user);
@@ -52,5 +46,10 @@ public class UserControllers {
         } else {
             return false;
         }
+    }
+
+    public User findUser(String nickname) {
+        User user = TransferObject.toUser(nickname);
+        return this.usersService.findByNickname(user);
     }
 }

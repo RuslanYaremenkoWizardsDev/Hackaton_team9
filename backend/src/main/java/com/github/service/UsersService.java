@@ -34,6 +34,7 @@ public class UsersService implements IUserService{
         return this.repository.findByEmail(user);
     }
 
+
     @Override
     public User findByNickname(User user) {
         return this.repository.findByNickname(user);
@@ -49,4 +50,6 @@ public class UsersService implements IUserService{
     public void delete(User user) {
         this.repository.delete(user);
     }
+
+
 }
