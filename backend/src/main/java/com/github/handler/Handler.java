@@ -55,19 +55,13 @@ public class Handler extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("DO GET");
         PrintWriter out = resp.getWriter();
         String url = req.getRequestURI();
         if (url.contains("/account")) {
-            String token = req.getHeader("Authorization");
-            Token t = TokenProvider.decode(token);
-            if (TokenProvider.checkToken(t)) {
-                User user = this.userControllers.findUser(t.getNickname());
-                resp.setContentType("application/json");
-                out.write(JsonHelper.toFormat(user).get());
-            } else {
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Token is expired");
-            }
+            Token t = checkTokenInRequest(req, resp);
+            User user = this.userControllers.findUser(t.getNickname());
+            resp.setContentType("application/json");
+            out.write(JsonHelper.toFormat(user).get());
             out.flush();
             out.close();
         }
@@ -82,18 +76,14 @@ public class Handler extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
         } else {
             String url = req.getRequestURI();
-            System.out.println("Body : " + body);
-            System.out.println(url);
             if (url.contains("/auth")) {
                 UserAuthorizationDto payload = JsonHelper.fromFormat(body, UserAuthorizationDto.class)
                         .orElseThrow(BadRequest::new);
-                User user = TransferObject.toUser(payload);
                 String result = this.userControllers.auth(payload);
                 if (!Objects.isNull(result)) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     resp.addHeader("Authorization", result);
-                    resp.setContentType("application/json");
-                    out.write(JsonHelper.toFormat(user.getRole()).get());
+                    out.write(result);
                 } else {
                     resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     out.write("No such user");
@@ -126,12 +116,13 @@ public class Handler extends HttpServlet {
         }
     }
 
-    private void checkTokenInRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private Token checkTokenInRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String in = req.getHeader("Authorization");
         Token token = TokenProvider.decode(in);
         if (!TokenProvider.checkToken(token)) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Token is invalid");
         }
+        return token;
     }
 
     private void setAccessHeaders(HttpServletResponse resp) {

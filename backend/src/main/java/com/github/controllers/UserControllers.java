@@ -29,14 +29,7 @@ public class UserControllers {
     public String auth(UserAuthorizationDto payload) {
         User user = this.dataService.findByNickname(TransferObject.toUser(payload));
         if (!Objects.isNull(user)) {
-            int LIFETIME = 1800000;
-            Token token = new Token(
-                    user.getId(),
-                    user.getRole(),
-                    user.getNickname(),
-                    System.currentTimeMillis(),
-                    System.currentTimeMillis() + LIFETIME
-            );
+            Token token = new Token(user);
             return TokenProvider.encode(token);
         } else {
             return null;
