@@ -1,4 +1,5 @@
 import { urls, validation, login, registration, renderModal } from './modules';
+import { renderDeleteModal } from './modules/mainPage/renderModal';
 import './styles/index.scss';
 
 
@@ -10,8 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (path === '/registration.html') {
     validation(urls.registr, registration, true);
   }
-  if( path==='/createtour.html'||path==='/stats.html'||path==='/tournaments.html'){
-    console.log('sad')
+  if( path==='/createtour.html'){
+    console.log('sad');
     renderModal()
+  }
+  if( path==='/stats.html'){
+    console.log('sad');
+    renderModal()
+  }
+  if( path==='/tournaments.html'){
+    console.log('sad');
+    renderModal();
+    renderDeleteModal()
   }
 });
