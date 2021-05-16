@@ -46,18 +46,18 @@ export const
       ar: 'امسح الكل'
     },
     searchStart: {
-      en: 'Search be start date',
+      en: 'Search by start date',
       ru: 'Поиск по дате старта',
       ar: 'البحث حسب تاريخ البدء'
     },
     searchReg: {
-      en: 'Search by reg date',
-      ru: 'Поиск по дате регистрации',
+      en: 'Search by type',
+      ru: 'Поиск по типу',
       ar: 'البحث حسب تاريخ التسجيل'
     },
     searchState: {
-      en: 'Search by state',
-      ru: 'Поиск по состоянию',
+      en: 'Search by players',
+      ru: 'Поиск по игрокам',
       ar: 'البحث عن طريق الدولة'
     },
     tourName: {
@@ -114,17 +114,17 @@ export const
   tourPlacholder = {
     entStartDate: {
       en: 'Enter start date...',
-      ru: 'Введите дату начала',
+      ru: 'Введите дату начала...',
       ar: 'أدخل تاريخ البدء'
     },
     entRegDate: {
       en: 'Enter reg date...',
-      ru: 'Введите дату регистрации',
+      ru: 'Введите дату регистрации...',
       ar: 'أدخل تاريخ التسجيل'
     },
     entState: {
-      en: 'Enter state',
-      ru: 'Введите состояние',
+      en: 'Enter player name...',
+      ru: 'Введите имя игрока...',
       ar: 'أدخل بلدك'
     }
   },
@@ -188,21 +188,21 @@ export const
   },
   authIpt = {
     login: {
-      en: 'Enter login',
-      ru: 'Введите логин',
+      en: 'Enter login...',
+      ru: 'Введите логин...',
       ar: 'أدخل تسجيل الدخول'
     },
     password: {
-      en: 'Enter password',
-      ru: 'Введите пароль',
+      en: 'Enter password...',
+      ru: 'Введите пароль...',
       ar: 'أدخل كلمة المرور'
     },
   },
   regIpt = {
     ...authIpt,
     confirmPassword: {
-      en: 'Confirm password',
-      ru: 'Подтвердите пароль',
+      en: 'Confirm password...',
+      ru: 'Подтвердите пароль...',
       ar: 'تأكيد كلمة المرور'
     }
   };

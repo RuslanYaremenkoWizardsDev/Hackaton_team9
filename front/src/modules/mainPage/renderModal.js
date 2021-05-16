@@ -29,7 +29,11 @@ export default function renderModal() {
                 modalSettings.style.display = 'none';
             }
         });
-
+        let avatar=document.querySelector('.header__modal-avatar')
+        avatar.addEventListener("mouseenter",()=>{
+            console.log('here')
+            
+        })
     });
 }
 

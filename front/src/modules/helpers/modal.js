@@ -3,9 +3,10 @@ export const modal = `
     <div class="header__modal">
       <div class="header__modal-content">
         <div class="header__modal-head">
-          <p class="header__head-text">Settings</p>
+          <p class="header__head-text">My account</p>
           <span class="header__close">&times;</span>
         </div>
+        <img src="../../assets/1-36-1024x1024.jpg" class="header__modal-avatar">
         <p class="header__modal-text">Below you can change your login and/or password</p>
         <div class="header__login">
            <p class="header__input-text">Login</p>
