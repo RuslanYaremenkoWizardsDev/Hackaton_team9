@@ -1,36 +1,53 @@
 package com.github.service;
 
-
-import com.github.dto.UserRegistrationDto;
-import com.github.dto.UserAuthorizationDto;
+import com.github.controllers.UserControllers;
 import com.github.entity.User;
 import com.github.repository.UsersRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.List;
 
-public class UsersService {
+public class UsersService implements IUserService{
 
-    private final UsersRepository usersRepository;
+    private static final Logger log = LoggerFactory.getLogger(UserControllers.class);
 
-    public UsersService(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    private final UsersRepository repository;
+
+    public UsersService(UsersRepository repository) {
+
+        this.repository = repository;
     }
 
-    public User findById(long id) {
-        return this.usersRepository.findById(id);
+    @Override
+    public User create(User user) {
+         return this.repository.save(user);
     }
 
-    public User findByAuth(UserAuthorizationDto auth) {
-        return this.usersRepository.findByAuthDto(auth);
+    @Override
+    public List<User> read() {
+        return this.repository.findAll();
     }
 
-    public User save(UserAuthorizationDto userAuthorizationDto) {
-        return this.usersRepository.saveStudent(new User(userAuthorizationDto));
+    @Override
+    public User findByEmail(User user) {
+
+        return this.repository.findByEmail(user);
     }
 
-    public void delete(UserRegistrationDto userRegistrationDto) {
-        this.usersRepository.delete(userRegistrationDto);
+    @Override
+    public User findByNickname(User user) {
+
+        return this.repository.findByNickname(user);
     }
 
-    public void update(UserRegistrationDto userRegistrationDto) {
-        this.usersRepository.update(userRegistrationDto);
+    @Override
+    public void update(User user) {
+
+        this.repository.update(user);
+    }
+
+    @Override
+    public void delete(User user) {
+        this.repository.delete(user);
     }
 }

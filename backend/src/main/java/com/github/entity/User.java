@@ -43,10 +43,17 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password) {
+    public User(String nickname, String email, String password) {
+        this.nickname = nickname;
         this.email = email;
         this.password = password;
     }
+
+    public User(String nickname, String password) {
+        this.nickname = nickname;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }
@@ -125,11 +132,6 @@ public class User {
 
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
-    }
-
-    public User(UserAuthorizationDto userAuthorizationDto) {
-        this.nickname = userAuthorizationDto.getLogin();
-        this.password = userAuthorizationDto.getPassword();
     }
 
     @Override

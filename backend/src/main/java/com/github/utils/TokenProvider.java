@@ -1,5 +1,6 @@
 package com.github.utils;
 
+import com.github.exceptions.BadRequest;
 import com.github.payload.Token;
 import com.github.exceptions.CryptoException;
 import org.slf4j.Logger;
@@ -27,9 +28,9 @@ public class TokenProvider {
     private static byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 
-    public static String encode(Token t) throws CryptoException {
+    public static String encode(Token t) {
         if(t == null){
-            throw new CryptoException("Empty token!");
+            throw new BadRequest("Token is null");
         }
         String str = JsonHelper.toFormat(t).get();
         try {

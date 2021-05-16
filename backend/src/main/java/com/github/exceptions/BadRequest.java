@@ -2,7 +2,7 @@ package com.github.exceptions;
 
 import java.io.IOException;
 
-public class BadRequest extends IOException {
+public class BadRequest extends RuntimeException {
     public BadRequest() {
     }
 

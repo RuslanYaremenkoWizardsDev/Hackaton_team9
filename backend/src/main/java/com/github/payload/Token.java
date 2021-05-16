@@ -24,20 +24,20 @@ public class Token implements Serializable {
     public Token() {
     }
 
+    public Token(Long id, Role role, String nickname, long currentTimeMillis, long l) {
+        this.id = id;
+        this.role = role;
+        this.nickname = nickname;
+        this.createdAt = currentTimeMillis;
+        this.expireIn = l;
+    }
+
     public void setExpireIn(Date expireIn) {
         this.expireIn = expireIn.getTime();
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt.getTime();
-    }
-
-    public Token(Long id, Role role, String nickname, Date createdAt) {
-        this.id = id;
-        this.role = role;
-        this.nickname = nickname;
-        this.createdAt = createdAt.getTime();
-        this.expireIn = this.createdAt + HALF_HOUR;
     }
 
     public Token(User user, Date createdAt) {

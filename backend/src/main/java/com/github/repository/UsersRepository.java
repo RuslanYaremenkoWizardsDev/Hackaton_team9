@@ -1,12 +1,12 @@
 package com.github.repository;
 
-import com.github.dto.UserAuthorizationDto;
-import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.utils.HibernateUtils;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class UsersRepository {
 
@@ -59,6 +59,12 @@ public class UsersRepository {
         return user;
     }
 
+    public List<User> findAll() {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            return session.createQuery("from users", User.class).list();
+        }
+    }
+
     public void update(User user){
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
@@ -87,11 +93,9 @@ public class UsersRepository {
         }
     }
 
-
-
-    public static void main(String[] args) {
-        UsersRepository usersRepository = new UsersRepository();
-        usersRepository.save(new User());
-    }
+//    public static void main(String[] args) {
+//        UsersRepository usersRepository = new UsersRepository();
+//        usersRepository.save(new User());
+//    }
 
 }
