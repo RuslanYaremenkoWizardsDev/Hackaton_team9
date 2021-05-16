@@ -57,6 +57,7 @@ public class Handler extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        setAccessHeaders(resp);
         PrintWriter out = resp.getWriter();
         String url = req.getRequestURI();
         if (url.contains("/account")) {
