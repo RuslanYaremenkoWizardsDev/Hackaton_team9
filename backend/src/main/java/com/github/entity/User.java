@@ -1,7 +1,5 @@
 package com.github.entity;
 
-import com.github.dto.UserAuthorizationDto;
-
 import javax.persistence.*;
 import java.util.Objects;
 

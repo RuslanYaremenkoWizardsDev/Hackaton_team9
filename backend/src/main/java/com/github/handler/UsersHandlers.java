@@ -3,16 +3,21 @@ package com.github.handler;
 import com.github.controllers.UserControllers;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.entity.User;
 import com.github.exceptions.BadRequest;
 import com.github.exceptions.NotFound;
 import com.github.utils.JsonHelper;
+import com.github.utils.TransferObject;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -62,6 +67,7 @@ public class UsersHandlers extends HttpServlet {
         System.out.println("DO POST");
         String body = req.getReader().lines().collect(Collectors.joining());
         System.out.println(req.getHeader("Content-Type"));
+        PrintWriter out = null;
         if (!req.getHeader("Content-Type").contains("application/json")) {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
         } else {
@@ -72,25 +78,33 @@ public class UsersHandlers extends HttpServlet {
                 System.out.println("AUTH");
                 UserAuthorizationDto payload = JsonHelper.fromFormat(body, UserAuthorizationDto.class)
                         .orElseThrow(BadRequest::new);
+                User user = TransferObject.toUser(payload);
                 String result = Optional.of(this.userControllers.auth(payload)).orElseThrow(BadRequest::new);
-                ServletOutputStream out = resp.getOutputStream();
-                resp.setContentType("application/json");
-                resp.setStatus(HttpServletResponse.SC_ACCEPTED);
-                out.write(result.getBytes());
+                if (!Objects.isNull(result)) {
+                    resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+                    resp.addHeader("Authorization", result);
+                    resp.setContentType("application/json");
+                    resp.setStatus(200);
+                    out.write(String.valueOf(JsonHelper.toFormat(user.getRole())));
+
+                } else {
+                    resp.setStatus(403);
+                }
                 out.flush();
                 out.close();
-                return;
             }
 
             if (url.contains("/registration")) {
                 System.out.println("REG");
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
-                this.userControllers.reg(payload);
-                resp.setStatus(HttpServletResponse.SC_ACCEPTED);
-            } else {
-                System.out.println("BAD REQ");
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                boolean status = this.userControllers.reg(payload);
+                if (status) {
+                    resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+                } else {
+                    System.out.println("BAD REQ");
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
             }
         }
     }
