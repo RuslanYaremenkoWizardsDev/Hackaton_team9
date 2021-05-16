@@ -1,12 +1,11 @@
 package com.github.controllers;
 
 
-import com.github.dto.UserRegistrationDto;
-import com.github.exceptions.CryptoException;
-import com.github.service.UsersService;
 import com.github.dto.UserAuthorizationDto;
+import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.payload.Token;
+import com.github.service.UsersService;
 import com.github.utils.TokenProvider;
 import com.github.utils.TransferObject;
 
@@ -47,5 +46,10 @@ public class UserControllers {
         } else {
             return false;
         }
+    }
+
+    public User findUser(String nickname) {
+        User user = TransferObject.toUser(nickname);
+        return this.usersService.findByNickname(user);
     }
 }

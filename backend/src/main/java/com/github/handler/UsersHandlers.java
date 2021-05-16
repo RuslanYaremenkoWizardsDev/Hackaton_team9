@@ -6,19 +6,19 @@ import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
 import com.github.exceptions.BadRequest;
 import com.github.exceptions.NotFound;
+import com.github.payload.Token;
+import com.github.service.UsersService;
 import com.github.utils.JsonHelper;
+import com.github.utils.TokenProvider;
 import com.github.utils.TransferObject;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -55,11 +55,34 @@ public class UsersHandlers extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("DO GET");
-        ServletOutputStream out = resp.getOutputStream();
-        String result = Optional.of(this.userControllers.auth(new UserAuthorizationDto())).orElseThrow(BadRequest::new);
-        out.write(result.getBytes());
-        out.flush();
-        out.close();
+        PrintWriter out = resp.getWriter();
+        if (!req.getHeader("Content-Type").contains("application/json")) {
+            resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
+        } else {
+            String url = req.getRequestURI();
+            System.out.println(url);
+            if (url.contains("/account")) {
+                String token = req.getHeader("Authorization");
+                Token t = TokenProvider.decode(token);
+                if (Objects.isNull(t)) {
+                    resp.setStatus(400);
+                    out.write(JsonHelper.toFormat("Token is null").get());
+                } else {
+                    long exp = t.getExpireIn();
+                    if (exp > System.currentTimeMillis()) {
+                        User user = this.userControllers.findUser(t.getNickname());
+                        resp.setContentType("application/json");
+                        out.write(JsonHelper.toFormat(user).get());
+                    } else {
+                        resp.setStatus(400);
+                        out.write(JsonHelper.toFormat("Token is expired.").get());
+                    }
+                }
+                out.flush();
+                out.close();
+
+            }
+        }
     }
 
     @Override
