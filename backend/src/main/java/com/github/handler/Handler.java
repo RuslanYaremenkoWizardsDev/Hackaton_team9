@@ -100,7 +100,6 @@ public class Handler extends HttpServlet {
                 }
             }
             if (url.contains("/registration")) {
-                System.out.println("REG");
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.reg(payload);

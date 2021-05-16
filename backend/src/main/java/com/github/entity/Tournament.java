@@ -1,7 +1,7 @@
 package com.github.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -26,10 +26,10 @@ public class Tournament {
     private String place;
 
     @Column(name = "startDate")
-    private Date startDate;
+    private Long startDate;
 
     @Column(name = "lastRegistration")
-    private Date lastRegistration;
+    private Long lastRegistration;
 
     @JoinColumn(name = "tourLvl")
     private String tourLvl;
@@ -54,8 +54,8 @@ public class Tournament {
         this.description = description;
         this.mode = mode;
         this.place = place;
-        this.startDate = startDate;
-        this.lastRegistration = lastRegistration;
+        this.startDate = startDate.getTime();
+        this.lastRegistration = lastRegistration.getTime();
         this.tourLvl = tourLvl;
         this.playerQuantity = playerQuantity;
         this.scenario = scenario;
@@ -63,7 +63,7 @@ public class Tournament {
         this.status= status;
     }
     public Tournament(String tourName, String description,
-                      boolean mode, String place, Date startDate, Date lastRegistration,
+                      boolean mode, String place, Long startDate, Long lastRegistration,
                       String tourLvl, int playerQuantity, String scenario, String players, String status) {
         this.tourName = tourName;
         this.description = description;
@@ -122,19 +122,23 @@ public class Tournament {
         this.place = place;
     }
 
-    public Date getStartDate() {
+    public boolean isMode() {
+        return mode;
+    }
+
+    public Long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getLastRegistration() {
+    public Long getLastRegistration() {
         return lastRegistration;
     }
 
-    public void setLastRegistration(Date lastRegistration) {
+    public void setLastRegistration(Long lastRegistration) {
         this.lastRegistration = lastRegistration;
     }
 

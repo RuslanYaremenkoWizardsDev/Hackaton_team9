@@ -14,9 +14,9 @@ public class TournamentCreationDto {
 
     private String place;
 
-    private Date startDate;
+    private Long startDate;
 
-    private Date lastRegistration;
+    private Long lastRegistration;
 
     private String tourLvl;
 
@@ -36,8 +36,8 @@ public class TournamentCreationDto {
         this.description = description;
         this.mode = mode;
         this.place = place;
-        this.startDate = startDate;
-        this.lastRegistration = lastRegistration;
+        this.startDate = startDate.getTime();
+        this.lastRegistration = lastRegistration.getTime();
         this.tourLvl = tourLvl;
         this.playerQuantity = playerQuantity;
         this.scenario = scenario;
@@ -116,28 +116,20 @@ public class TournamentCreationDto {
         this.place = place;
     }
 
-    public Date getStartDate() {
+    public Long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Long startDate) {
         this.startDate = startDate;
     }
 
-    public void setStartDate(String date) {
-        this.startDate = Date.valueOf(date);
-    }
-
-    public Date getLastRegistration() {
+    public Long getLastRegistration() {
         return lastRegistration;
     }
 
-    public void setLastRegistration(Date lastRegistration) {
+    public void setLastRegistration(Long lastRegistration) {
         this.lastRegistration = lastRegistration;
-    }
-
-    public void setLastRegistration(String lastRegistration) {
-        this.lastRegistration = Date.valueOf(lastRegistration);
     }
 
     public String getTourLvl() {
