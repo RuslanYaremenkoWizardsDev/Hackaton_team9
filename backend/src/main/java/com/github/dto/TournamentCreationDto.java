@@ -1,7 +1,6 @@
 package com.github.dto;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
+
 import java.sql.Date;
 import java.util.Objects;
 
@@ -29,6 +28,8 @@ public class TournamentCreationDto {
 
     private String status;
 
+    public TournamentCreationDto() {
+    }
 
     public TournamentCreationDto(String tourName, String description, boolean mode, String place, Date startDate, Date lastRegistration, String tourLvl, int playerQuantity, String scenario, String players) {
         this.tourName = tourName;
@@ -123,12 +124,20 @@ public class TournamentCreationDto {
         this.startDate = startDate;
     }
 
+    public void setStartDate(String date) {
+        this.startDate = Date.valueOf(date);
+    }
+
     public Date getLastRegistration() {
         return lastRegistration;
     }
 
     public void setLastRegistration(Date lastRegistration) {
         this.lastRegistration = lastRegistration;
+    }
+
+    public void setLastRegistration(String lastRegistration) {
+        this.lastRegistration = Date.valueOf(lastRegistration);
     }
 
     public String getTourLvl() {

@@ -1,9 +1,9 @@
 package com.github.config;
 
-import com.github.handler.UsersHandlers;
+import com.github.handler.Handler;
 
 public class HandlerConfig {
-    public static UsersHandlers usersHandlers() {
-        return new UsersHandlers(ControllerConfig.usersController());
+    public static Handler usersHandlers() {
+        return new Handler(ControllerConfig.usersController());
     }
 }

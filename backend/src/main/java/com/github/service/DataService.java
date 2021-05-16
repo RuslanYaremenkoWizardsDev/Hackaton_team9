@@ -3,18 +3,18 @@ package com.github.service;
 import com.github.controllers.UserControllers;
 import com.github.entity.Tournament;
 import com.github.entity.User;
-import com.github.repository.UsersRepository;
+import com.github.repository.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
 
-public class UsersService implements IUserService{
+public class DataService implements IDataService {
 
     private static final Logger log = LoggerFactory.getLogger(UserControllers.class);
 
-    private final UsersRepository repository;
+    private final Repository repository;
 
-    public UsersService(UsersRepository repository) {
+    public DataService(Repository repository) {
 
         this.repository = repository;
     }

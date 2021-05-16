@@ -6,7 +6,7 @@ import com.github.entity.User;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IDataService {
 
     User create(User user);
 

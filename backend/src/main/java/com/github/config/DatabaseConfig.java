@@ -1,12 +1,12 @@
 package com.github.config;
 
-import com.github.repository.UsersRepository;
-import com.github.service.UsersService;
+import com.github.repository.Repository;
+import com.github.service.DataService;
 
 public class DatabaseConfig {
 
-    public static UsersService getUsersService() {
-        return new UsersService(new UsersRepository());
+    public static DataService getUsersService() {
+        return new DataService(new Repository());
     }
 
 }

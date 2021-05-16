@@ -71,8 +71,7 @@ public class TokenProvider {
         return newT;
     }
 
-    public static boolean checkToken(String str) {
-        Token token = decode(str);
+    public static boolean checkToken(Token token) {
         if(token == null){
             log.info("Token is null!");
             return false;

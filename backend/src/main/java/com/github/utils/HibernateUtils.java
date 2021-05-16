@@ -2,6 +2,7 @@ package com.github.utils;
 
 import java.util.Properties;
 
+import com.github.entity.Tournament;
 import com.github.entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -31,6 +32,8 @@ public class HibernateUtils {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(User.class);
+
+                configuration.addAnnotatedClass(Tournament.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

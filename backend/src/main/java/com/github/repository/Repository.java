@@ -13,7 +13,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class UsersRepository {
+public class Repository {
 
     public Tournament save(Tournament tournament) {
         Transaction transaction = null;
