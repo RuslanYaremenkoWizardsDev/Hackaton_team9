@@ -77,11 +77,18 @@
         font-weight: bold;
         cursor: pointer;
     }
+    &__avatar{
+      display: flex;
+      justify-content: center;
+    }
     &__modal-avatar{
       border:solid 4px $button-bg;
       border-radius: 50%;
       width: 20%;
-      margin: 0 auto;
+      cursor: pointer;
+    }
+    &__avatar-add{
+      cursor: pointer;
     }
     &__modal-text{
       text-align: center;

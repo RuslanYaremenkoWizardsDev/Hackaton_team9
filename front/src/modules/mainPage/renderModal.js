@@ -16,6 +16,8 @@ export default function renderModal() {
         const modalCancel = document.querySelector('.header__cancel');
         const modalBg = document.querySelector('.header__modal');
 
+        document.querySelector('.header__avatar-add').style.display='none'
+
         modalClose.addEventListener('click', () => {
             modalSettings.style.display = 'none';
         });
@@ -30,9 +32,13 @@ export default function renderModal() {
             }
         });
         let avatar=document.querySelector('.header__modal-avatar')
-        avatar.addEventListener("mouseenter",()=>{
-            console.log('here')
-            
+        avatar.addEventListener("click",()=>{
+            if(document.querySelector('.header__avatar-add').style.display=='none'){
+            document.querySelector('.header__avatar-add').style.display='block'
+            }
+            else if(document.querySelector('.header__avatar-add').style.display=='block'){
+                document.querySelector('.header__avatar-add').style.display='none'
+                }
         })
     });
 }
