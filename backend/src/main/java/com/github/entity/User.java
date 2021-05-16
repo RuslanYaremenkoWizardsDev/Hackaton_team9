@@ -38,10 +38,27 @@ public class User {
     @Column (name = "role")
     private String role;
 
+    @Column (name = "games")
+    private int games;
+
+    @Column (name = "wins")
+    private int wins;
+
+    @Column (name = "draws")
+    private int draws;
+
+    @Column (name = "losses")
+    private int losses;
+
+    @Column (name = "cups")
+    private int cups;
+
     public User() {
+        initNullVariables();
     }
 
     public User(String nickname, String email, String password) {
+        initNullVariables();
         this.nickname = nickname;
         this.email = email;
         this.password = password;
@@ -49,9 +66,18 @@ public class User {
     }
 
     public User(String nickname, String password) {
+        initNullVariables();
         this.nickname = nickname;
         this.password = password;
         this.role = "USER";
+    }
+
+    private void initNullVariables() {
+        this.games = 0;
+        this.wins = 0;
+        this.losses = 0;
+        this.cups = 0;
+        this.draws = 0;
     }
 
     public Long getId() {
@@ -134,27 +160,72 @@ public class User {
         this.secretKey = secretKey;
     }
 
+    public int getGames() {
+        return games;
+    }
+
+    public void setGames(int games) {
+        this.games = games;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    public int getCups() {
+        return cups;
+    }
+
+    public void setCups(int cups) {
+        this.cups = cups;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return age == user.age &&
-                role == user.role &&
+                games == user.games &&
+                wins == user.wins &&
+                draws == user.draws &&
+                losses == user.losses &&
+                cups == user.cups &&
+                Objects.equals(id, user.id) &&
                 Objects.equals(nickname, user.nickname) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(city, user.city) &&
                 Objects.equals(hobby, user.hobby) &&
                 Objects.equals(avatar, user.avatar) &&
-                Objects.equals(secretKey, user.secretKey);
+                Objects.equals(secretKey, user.secretKey) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(role, nickname, email, password, city, age, hobby, avatar, secretKey);
+        return Objects.hash(id, nickname, email, password, city, age, hobby, avatar, secretKey, role, games, wins, draws, losses, cups);
     }
-
 
     @Override
     public String toString() {
@@ -168,7 +239,12 @@ public class User {
                 ", hobby='" + hobby + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", secretKey='" + secretKey + '\'' +
-                ", role=" + role +
+                ", role='" + role + '\'' +
+                ", games=" + games +
+                ", wins=" + wins +
+                ", draws=" + draws +
+                ", losses=" + losses +
+                ", cups=" + cups +
                 '}';
     }
 }

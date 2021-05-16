@@ -93,31 +93,30 @@ public class UsersHandlers extends HttpServlet {
                 UserAuthorizationDto payload = JsonHelper.fromFormat(body, UserAuthorizationDto.class)
                         .orElseThrow(BadRequest::new);
                 User user = TransferObject.toUser(payload);
-                String result = Optional.of(this.userControllers.auth(payload)).orElseThrow(BadRequest::new);
+                String result = this.userControllers.auth(payload);
                 if (!Objects.isNull(result)) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     resp.addHeader("Authorization", result);
                     resp.setContentType("application/json");
                     out.write(JsonHelper.toFormat(user.getRole()).get());
                 } else {
-                    resp.setStatus(403);
+                    resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    out.write("No such user");
                 }
-                out.flush();
-                out.close();
             }
-
             if (url.contains("/registration")) {
-                System.out.println("REG");
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.reg(payload);
                 if (status) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                 } else {
-                    System.out.println("BAD REQ");
+                    out.write("Problem with registration");
                     resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 }
             }
+            out.flush();
+            out.close();
         }
     }
 

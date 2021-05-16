@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.Collection;
 
 public class TournamentRepository implements ITournamentRepository {
+
     @Override
     public Collection<Tournament> findAll() {
         return null;

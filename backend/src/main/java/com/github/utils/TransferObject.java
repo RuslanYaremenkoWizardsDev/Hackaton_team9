@@ -24,7 +24,7 @@ public class TransferObject {
                 user = new User (payload.getLogin(), payload.getPassword());
                 if(!isLegalUser(user)) throw new IllegalArgumentException("Illegal user");
             }
-        }
+        } else throw new IllegalArgumentException("Password is not confirmed");
         return user;
     }
 

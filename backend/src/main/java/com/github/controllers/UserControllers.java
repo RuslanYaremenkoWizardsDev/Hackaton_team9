@@ -1,6 +1,5 @@
 package com.github.controllers;
 
-
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
 import com.github.entity.User;
@@ -8,10 +7,14 @@ import com.github.payload.Token;
 import com.github.service.UsersService;
 import com.github.utils.TokenProvider;
 import com.github.utils.TransferObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 public class UserControllers {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserControllers.class);
 
     private final UsersService usersService;
 
@@ -38,7 +41,13 @@ public class UserControllers {
     }
 
     public boolean reg(UserRegistrationDto payload) {
-        User user = TransferObject.toUser(payload);
+        User user;
+        try {
+            user = TransferObject.toUser(payload);
+        } catch (IllegalArgumentException e){
+            logger.warn(e.getMessage());
+            return false;
+        }
         if (Objects.isNull(this.usersService.findByNickname(user)) &&
                 Objects.isNull(this.usersService.findByEmail(user))) {
             this.usersService.create(user);
