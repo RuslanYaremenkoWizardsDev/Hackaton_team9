@@ -16,7 +16,7 @@ public class ServerConfig {
             webPort = "8080"; //TODO - make 5432
         }
         tomcat.setPort(Integer.parseInt(webPort));
-        Context ctx = tomcat.addWebapp("/login", new File(".").getAbsolutePath());
+        Context ctx = tomcat.addWebapp("/", new File(".").getAbsolutePath());
         ctx.addApplicationListener(WsContextListener.class.getName());
         tomcat.addServlet(ctx, "UsersHandlers", HandlerConfig.usersHandlers());
         ctx.addServletMappingDecoded("/*", "UsersHandlers");
