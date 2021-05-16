@@ -136,6 +136,6 @@ public class Handler extends HttpServlet {
     private void setAccessHeaders(HttpServletResponse resp) {
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
-        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     }
 }
