@@ -13,6 +13,7 @@ import com.github.utils.TransferObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UserControllers {
@@ -22,7 +23,6 @@ public class UserControllers {
     private final DataService dataService;
 
     public UserControllers(DataService customDataService) {
-
         this.dataService = customDataService;
     }
 
@@ -60,11 +60,15 @@ public class UserControllers {
 
     public boolean createTournament(TournamentCreationDto tournamentCreationDto){
         Tournament tournament = TransferObject.toTournament(tournamentCreationDto);
-        if (Objects.nonNull(tournament)){
+        if (Objects.nonNull(tournament) && Objects.isNull(this.dataService.findByName(tournament))){
             this.dataService.createTournament(tournament);
             return true;
         } else {
             return false;
         }
+    }
+
+    public List<Tournament> getAllTournaments() {
+        return this.dataService.readAllTournaments();
     }
 }

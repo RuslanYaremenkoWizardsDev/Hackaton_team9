@@ -19,6 +19,17 @@ public class DataService implements IDataService {
     }
 
     @Override
+    public List<Tournament> readAllTournaments() {
+        return repository.findAllTournaments();
+    }
+
+    @Override
+    public Tournament findByName(Tournament tournament) {
+        return this.repository.findByName(tournament);
+    }
+
+
+    @Override
     public User create(User user) {
          return this.repository.save(user);
     }

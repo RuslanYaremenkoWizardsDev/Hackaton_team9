@@ -81,9 +81,32 @@ public class Repository {
         return user;
     }
 
+    public Tournament findByName(Tournament tournament) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Tournament> cr = cb.createQuery(Tournament.class);
+            Root<Tournament> root = cr.from(Tournament.class);
+            cr.select(root).where(cb.equal(root.get("tourName"), tournament.getTourName()));
+            Query<Tournament> query = session.createQuery(cr);
+            List<Tournament> results = query.getResultList();
+            if (results.size() != 0) {tournament = results.get(0);}
+            else {tournament = null;}
+            Hibernate.initialize(tournament);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tournament;
+    }
+
     public List<User> findAll() {
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-            return session.createQuery("from users", User.class).list();
+            return session.createQuery("select p from User p", User.class).list();
+        }
+    }
+
+    public List<Tournament> findAllTournaments() {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            return session.createQuery("select p from Tournament p", Tournament.class).list();
         }
     }
 

@@ -4,6 +4,7 @@ import com.github.controllers.UserControllers;
 import com.github.dto.TournamentCreationDto;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.entity.Tournament;
 import com.github.entity.User;
 import com.github.exceptions.BadRequest;
 import com.github.exceptions.NotFound;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -62,9 +64,15 @@ public class Handler extends HttpServlet {
             User user = this.userControllers.findUser(t.getNickname());
             resp.setContentType("application/json");
             out.write(JsonHelper.toFormat(user).get());
-            out.flush();
-            out.close();
         }
+        if(url.contains("/gettournaments")) {
+            Token t = checkTokenInRequest(req, resp);
+            List<Tournament> list = this.userControllers.getAllTournaments();
+            resp.setContentType("application/json");
+            out.write(JsonHelper.toFormat(list).get());
+        }
+        out.flush();
+        out.close();
     }
 
     @Override
@@ -96,19 +104,18 @@ public class Handler extends HttpServlet {
                 if (status) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                 } else {
-                    out.write("Problem with registration");
-                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Problems with registration");
                 }
             }
             if (url.contains("/createtournament")) {
-//                checkTokenInRequest(req, resp);
+                checkTokenInRequest(req, resp);
                 TournamentCreationDto payload = JsonHelper.fromFormat(body, TournamentCreationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.createTournament(payload);
                 if (status) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                 } else {
-                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Problems with creation");
                 }
             }
             out.flush();
