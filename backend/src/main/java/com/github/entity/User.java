@@ -47,11 +47,13 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
+        this.role = Role.user;
     }
 
     public User(String nickname, String password) {
         this.nickname = nickname;
         this.password = password;
+        this.role = Role.user;
     }
 
     public Long getId() {
