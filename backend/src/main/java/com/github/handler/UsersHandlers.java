@@ -67,7 +67,7 @@ public class UsersHandlers extends HttpServlet {
         System.out.println("DO POST");
         String body = req.getReader().lines().collect(Collectors.joining());
         System.out.println(req.getHeader("Content-Type"));
-        PrintWriter out = null;
+        PrintWriter out = resp.getWriter();
         if (!req.getHeader("Content-Type").contains("application/json")) {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
         } else {
@@ -84,8 +84,8 @@ public class UsersHandlers extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     resp.addHeader("Authorization", result);
                     resp.setContentType("application/json");
-                    resp.setStatus(200);
-                    out.write(String.valueOf(JsonHelper.toFormat(user.getRole())));
+                    System.out.println(user.getRole());
+                    out.write(JsonHelper.toFormat(user.getRole()).get());
 
                 } else {
                     resp.setStatus(403);

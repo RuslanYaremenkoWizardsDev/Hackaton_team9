@@ -1,6 +1,5 @@
 package com.github.payload;
 
-import com.github.entity.Role;
 import com.github.entity.User;
 
 import java.io.Serializable;
@@ -13,7 +12,7 @@ public class Token implements Serializable {
 
     private Long id;
 
-    private Role role;
+    private String role;
 
     private String nickname;
 
@@ -24,7 +23,7 @@ public class Token implements Serializable {
     public Token() {
     }
 
-    public Token(Long id, Role role, String nickname, long currentTimeMillis, long l) {
+    public Token(Long id, String role, String nickname, long currentTimeMillis, long l) {
         this.id = id;
         this.role = role;
         this.nickname = nickname;
@@ -54,7 +53,7 @@ public class Token implements Serializable {
         this.expireIn = System.currentTimeMillis() + HALF_HOUR;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
