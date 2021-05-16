@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tournaments</title>
 </head>
+
 <body>
-        <header class="header">
-            <div class="header__settings">
-                <!-- <select>
+    <header class="header">
+        <div class="header__settings">
+            <!-- <select>
                     <option>en</option>
                     <option>ru</option>
                 </select>
@@ -17,40 +19,74 @@
                     <option>Dark</option>
                     <option>Light</option>
                 </select> -->
-                <img src="../assets/w450h4001385925286Settings.png" class="header__set-img">
-                <button class="btn">Log out</button>
+            <img src="../assets/w450h4001385925286Settings.png" class="header__set-img">
+            <button class="btn">Log out</button>
+        </div>
+        <div class="header__sidebar">
+            <img class="header__logo" src="../assets/unnamed.png" width="100px">
+            <div class="header__buttons">
+                <a href="tournaments.html" class="header__linka">Tournaments</a>
+                <a href="createtour.html" class="header__linka">Create tournament</a>
+                <a href="stats.html" class="header__linka">Stats</a>
             </div>
-            <div class="header__sidebar">
-                <img class="header__logo" src="../assets/unnamed.png" width="100px">
-                <div class="header__buttons">
-                    <a href="tournaments.html" class="header__linka">Tournaments</a>
-                    <a href="createtour.html" class="header__linka">Create tournament</a>
-                    <a href="stats.html" class="header__linka">Stats</a>
+        </div>
+    </header>
+    <main class="main">
+        <div class="content-tournaments">
+            <div class="content-tournaments__search-box">
+                <div class="content-tournaments__search-form">
+                    <span>Search by start date</span>
+                    <input>
                 </div>
-            </div>
-        </header>
-        <main class="main">
-            <div class="content-tournaments">
-                <div class="content-tournaments__search-box">
-                    <div class="content-tournaments__search-form">
-                        <span>Search by start date</span>
-                        <input>
-                    </div>
-                    <div class="content-tournaments__search-form">
-                        <span>Search by reg date</span>
-                        <input>
-                    </div>
-                    <div class="content-tournaments__search-form">
-                        <span>Search by state</span>
-                        <input>
-                    </div>
-                    <button class="content-tournaments__search-form btn">Clear all</button>
+                <div class="content-tournaments__search-form">
+                    <span>Search by reg date</span>
+                    <input>
                 </div>
-                <div class="content-tournaments__table"></div>
+                <div class="content-tournaments__search-form">
+                    <span>Search by state</span>
+                    <input>
+                </div>
+                <button class="content-tournaments__search-form btn">Clear all</button>
             </div>
-        </main>
-        <footer class="footer">
-            <div class="footer__content">create for <a href="https://deveducation.com/" class="footer__link" target="_blank">dev<span style="color: orange;">{</span>education<span style="color: orange;">}</span></a></div>
-        </footer>
+            <table class="content-tournaments__table">
+                <thead>
+                    <tr>
+                        <th class="content-tournaments__table-name">Name</th>
+                        <th class="content-tournaments__table-mode">Mode</th>
+                        <th class="content-tournaments__table-place">Place</th>
+                        <th class="content-tournaments__table-date">Start date</th>
+                        <th class="content-tournaments__table-date">Last reg date</th>
+                        <th class="content-tournaments__table-state">State</th>
+                        <th class="content-tournaments__table-level">Level</th>
+                        <th class="content-tournaments__table-participant">Participants</th>
+                        <th class="content-tournaments__table-scenario">Scenario</th>
+                        <th class="content-tournaments__table-actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WorldCup</td>
+                        <td>ada</td>
+                        <td>Kharkiv</td>
+                        <td>12.04.2021 16.04</td>
+                        <td>10.04.2021 16.04</td>
+                        <td>InProgress</td>
+                        <td>Middle</td>
+                        <td>6/32</td>
+                        <td>one-match</td>
+                        <td>Actions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer__content">create for <a href="https://deveducation.com/" class="footer__link"
+                target="_blank">dev<span style="color: orange;">{</span>education<span
+                    style="color: orange;">}</span></a></div>
+    </footer>
 </body>
+
 </html>

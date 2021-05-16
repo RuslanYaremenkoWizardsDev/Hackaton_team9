@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     background: $bg-secondary;
+    padding: 5px;
+    border: $b-radius;
     &__search-box{
         color:$bg-white;
         display: flex;
@@ -14,8 +16,20 @@
         flex-direction: column;
     }
     &__table{
-        background: $bg-white;
-        height: 250px;   //temporary
-        margin: 0 20px 20px;
+        border-collapse: collapse;
+        border-radius: $b-radius;
+        tr{
+            display: grid;
+            grid-template-columns: 10% 5% 10% 15% 15% 10% 10% 10% 10% 5% ;
+            text-align: center;
+        }
+        td,th{
+            border: 1px solid black;
+            padding: 4px 2px;
+            background: $bg-white;
+            color: $bg-dark;
+            font-size: 14px;
+        }
+        
     }
 }

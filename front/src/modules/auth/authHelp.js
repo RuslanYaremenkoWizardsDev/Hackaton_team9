@@ -5,7 +5,7 @@ export default class AuthHelp {
     this.body = {
       login: null,
       password: null,
-      confirmPass: null
+      confirmPassword: null
     };
     this.isReg = isReg;
   }
@@ -23,8 +23,8 @@ export default class AuthHelp {
     else if (id === 'password') {
       return this.body.password = e.target.value;
     }
-    else if (this.isReg && id === 'confirmPass') {
-      return this.body.confirmPass = e.target.value;
+    else if (this.isReg && id === 'confirmPassword') {
+      return this.body.confirmPassword = e.target.value;
     }
   }
 
@@ -35,7 +35,7 @@ export default class AuthHelp {
     else if (!this.passReg.test(this.body.password)) {
       return this.renderError(errTxt, message.invalidPass.en);
     }
-    else if (!this.passReg.test(this.body.confirmPass) && this.isReg) {
+    else if (!this.passReg.test(this.body.confirmPassword) && this.isReg) {
       return this.renderError(errTxt, message.invalidRepeatPass.en);
     }
     submit(url, this.body);

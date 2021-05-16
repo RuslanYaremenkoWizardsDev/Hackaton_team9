@@ -1,0 +1,15 @@
+{
+  "tourName": "ChampionShip",
+  "description": "saassdas",
+  "mode": "cup",
+  "place": "Kharkiv",
+  "startDate": "date",
+  "lastRegistration": "date",
+  "tourLvl": "Middle",
+  "playerQuantity": "32",
+  "scenario": "one-match-confrontation",
+  "players": [
+    "user1",
+    "user2"
+  ]
+}

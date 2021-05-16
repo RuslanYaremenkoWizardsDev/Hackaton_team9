@@ -1,9 +1,15 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
 .page{
   padding-top: 5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
-
 }
 
 .logo-block{

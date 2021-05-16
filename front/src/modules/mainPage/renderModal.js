@@ -21,15 +21,6 @@ export default function renderModal() {
         });
     });
 
-<<<<<<< HEAD
-
-=======
-    modalClose.addEventListener('click', (e) => {
-        if (e.target.className == 'header__close') {
-            modalSettings.style.display = 'none';
-        }
-    });
->>>>>>> 04c1d712b3caa02946e08ac7d3372929186d069b
 
 }
 
