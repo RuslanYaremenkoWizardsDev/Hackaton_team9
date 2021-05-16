@@ -39,12 +39,7 @@ public class UserControllers {
     }
 
     public boolean reg(UserRegistrationDto payload) {
-        User user;
-        try {
-            user = TransferObject.toUser(payload);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
+        User user = TransferObject.toUser(payload);
         if (Objects.isNull(this.usersService.findByNickname(user)) &&
                 Objects.isNull(this.usersService.findByEmail(user))) {
             this.usersService.create(user);

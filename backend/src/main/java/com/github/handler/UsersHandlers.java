@@ -79,7 +79,7 @@ public class UsersHandlers extends HttpServlet {
                 UserAuthorizationDto payload = JsonHelper.fromFormat(body, UserAuthorizationDto.class)
                         .orElseThrow(BadRequest::new);
                 User user = TransferObject.toUser(payload);
-                String result = Optional.of(this.userControllers.auth(payload)).orElseThrow(BadRequest::new);
+                String result = this.userControllers.auth(payload);
                 if (!Objects.isNull(result)) {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     resp.addHeader("Authorization", result);
