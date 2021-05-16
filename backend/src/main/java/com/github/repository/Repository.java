@@ -72,8 +72,8 @@ public class Repository {
             cr.select(root).where(cb.equal(root.get("nickname"), user.getNickname()));
             Query<User> query = session.createQuery(cr);
             List<User> results = query.getResultList();
-            if (results.size() != 0) user = results.get(0);
-            else user = null;
+            if (results.size() != 0) {user = results.get(0);}
+            else {user = null;}
             Hibernate.initialize(user);
         } catch (Exception e) {
             e.printStackTrace();
