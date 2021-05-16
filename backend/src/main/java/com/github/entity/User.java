@@ -1,7 +1,5 @@
 package com.github.entity;
 
-import com.github.dto.UserAuthorizationDto;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -38,7 +36,7 @@ public class User {
     private String secretKey;
 
     @Column (name = "role")
-    private Role role;
+    private String role;
 
     public User() {
     }
@@ -47,13 +45,13 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.role = Role.user;
+        this.role = "USER";
     }
 
     public User(String nickname, String password) {
         this.nickname = nickname;
         this.password = password;
-        this.role = Role.user;
+        this.role = "USER";
     }
 
     public Long getId() {
@@ -64,11 +62,11 @@ public class User {
         this.id = id;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
