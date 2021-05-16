@@ -20,7 +20,7 @@ public class Tournament {
     private String description;
 
     @Column(name = "mode")
-    private String mode;
+    private boolean mode;
 
     @Column(name = "place")
     private String place;
@@ -31,14 +31,13 @@ public class Tournament {
     @Column(name = "lastRegistration")
     private Date lastRegistration;
 
-    @Column(name = "tourLvl")
+    @JoinColumn(name = "tourLvl")
     private String tourLvl;
-
 
     @Column(name = "playerQuantity")
     private int playerQuantity;
 
-    @Column(name = "scenario")
+    @JoinColumn(name = "scenario")
     private String scenario;
 
     @Column(name = "players")
@@ -48,9 +47,24 @@ public class Tournament {
     private String status;
 
     public Tournament(Long tournament_id, String tourName, String description,
-                      String mode, String place, Date startDate, Date lastRegistration,
-                      String tourLvl, int playerQuantity, String scenario, String players) {
+                      boolean mode, String place, Date startDate, Date lastRegistration,
+                      String tourLvl, int playerQuantity, String scenario, String players, String status) {
         this.tournament_id = tournament_id;
+        this.tourName = tourName;
+        this.description = description;
+        this.mode = mode;
+        this.place = place;
+        this.startDate = startDate;
+        this.lastRegistration = lastRegistration;
+        this.tourLvl = tourLvl;
+        this.playerQuantity = playerQuantity;
+        this.scenario = scenario;
+        this.players = players;
+        this.status= status;
+    }
+    public Tournament(String tourName, String description,
+                      boolean mode, String place, Date startDate, Date lastRegistration,
+                      String tourLvl, int playerQuantity, String scenario, String players, String status) {
         this.tourName = tourName;
         this.description = description;
         this.mode = mode;
@@ -92,11 +106,11 @@ public class Tournament {
         this.description = description;
     }
 
-    public String getMode() {
+    public boolean getMode() {
         return mode;
     }
 
-    public void setMode(String mode) {
+    public void setMode(boolean mode) {
         this.mode = mode;
     }
 

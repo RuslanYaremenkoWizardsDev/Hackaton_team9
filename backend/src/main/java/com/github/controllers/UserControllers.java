@@ -1,7 +1,10 @@
 package com.github.controllers;
 
+
+import com.github.dto.TournamentCreationDto;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.entity.Tournament;
 import com.github.entity.User;
 import com.github.payload.Token;
 import com.github.service.UsersService;
@@ -60,5 +63,15 @@ public class UserControllers {
     public User findUser(String nickname) {
         User user = TransferObject.toUser(nickname);
         return this.usersService.findByNickname(user);
+    }
+
+    public boolean createTournament(TournamentCreationDto tournamentCreationDto){
+        Tournament tournament = TransferObject.toTournament(tournamentCreationDto);
+        if (Objects.nonNull(tournament)){
+            this.usersService.createTournament(tournament);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

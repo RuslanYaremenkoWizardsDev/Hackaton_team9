@@ -1,5 +1,6 @@
 package com.github.repository;
 
+import com.github.entity.Tournament;
 import com.github.entity.User;
 import com.github.utils.HibernateUtils;
 import org.hibernate.Hibernate;
@@ -13,6 +14,21 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UsersRepository {
+
+    public Tournament save(Tournament tournament) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(tournament);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return tournament;
+    }
 
     public User save(User user) {
         Transaction transaction = null;

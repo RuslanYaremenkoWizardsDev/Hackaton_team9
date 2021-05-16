@@ -33,6 +33,7 @@ public class UsersHandlers extends HttpServlet {
 
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("SERVICE");
         try {
             super.service(req, resp);
             setAccessHeaders(resp);
@@ -46,6 +47,10 @@ public class UsersHandlers extends HttpServlet {
 
     @Override
     public void doOptions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("DO OPTIONS");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
         resp.setStatus(204);
         setAccessHeaders(resp);
     }
@@ -82,11 +87,13 @@ public class UsersHandlers extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         setAccessHeaders(resp);
         String body = req.getReader().lines().collect(Collectors.joining());
+        System.out.println(req.getHeader("Content-Type"));
         PrintWriter out = resp.getWriter();
         if (!req.getHeader("Content-Type").contains("application/json")) {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
         } else {
             String url = req.getRequestURI();
+            System.out.println("Body : " + body);
             System.out.println(url);
             if (url.contains("/auth")) {
                 System.out.println("AUTH");
@@ -103,8 +110,12 @@ public class UsersHandlers extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     out.write("No such user");
                 }
+                out.flush();
+                out.close();
             }
+
             if (url.contains("/registration")) {
+                System.out.println("REG");
                 UserRegistrationDto payload = JsonHelper.fromFormat(body, UserRegistrationDto.class)
                         .orElseThrow(BadRequest::new);
                 boolean status = this.userControllers.reg(payload);
@@ -112,6 +123,19 @@ public class UsersHandlers extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                 } else {
                     out.write("Problem with registration");
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
+            }
+
+            if (url.contains("/createtournament")) {
+                System.out.println("Create");
+                TournamentCreationDto payload = JsonHelper.fromFormat(body, TournamentCreationDto.class)
+                        .orElseThrow(BadRequest::new);
+                boolean status = this.userControllers.createTournament(payload);
+                if (status) {
+                    resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+                } else {
+                    System.out.println("BAD REQ");
                     resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 }
             }

@@ -1,12 +1,31 @@
 package com.github.utils;
 
+import com.github.dto.TournamentCreationDto;
 import com.github.dto.UserAuthorizationDto;
 import com.github.dto.UserRegistrationDto;
+import com.github.entity.Tournament;
 import com.github.entity.User;
 
 import java.util.regex.Pattern;
 
 public class TransferObject {
+
+    public static Tournament toTournament(TournamentCreationDto tournamentCreationDto) {
+        Tournament tournament = new Tournament(
+                tournamentCreationDto.getTourName(),
+                tournamentCreationDto.getDescription(),
+                tournamentCreationDto.isMode(),
+                tournamentCreationDto.getPlace(),
+                tournamentCreationDto.getStartDate(),
+                tournamentCreationDto.getLastRegistration(),
+                tournamentCreationDto.getTourLvl(),
+                tournamentCreationDto.getPlayerQuantity(),
+                tournamentCreationDto.getScenario(),
+                tournamentCreationDto.getPlayers(),
+                tournamentCreationDto.getStatus()
+        );
+        return tournament;
+    }
 
     public static User toUser(String nickname) {
         User user = new User();
