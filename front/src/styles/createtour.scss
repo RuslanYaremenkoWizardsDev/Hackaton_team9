@@ -5,7 +5,7 @@
     justify-content: space-around;
     align-items: flex-start;
     &__fields{
-        width: 35%;
+        width: 20%;
         display: flex;
         flex-direction: column;
         background: $bg-white;
@@ -15,18 +15,42 @@
     &__item{
         display: flex;
         flex-direction: column;
-
         justify-content: space-between;
-        margin: 10px 0;
+        margin: 5px 0;
     }
     &__span{
         color:$bg-dark;
     }
     &__input{
         background: $bg-secondary;
+        outline: none;
+        border: none;
+    }
+    &__input-text{
+        height: 25px;
+    }
+    &__input::placeholder{
+        color: rgb(160, 160, 160);
+        font-style: italic;
+        font-size: 10px;
+        padding: 0 0 0 10px;
+    }
+    &__select{
+        padding: 0 0 0 10px;
+        height: 25px;
+    }
+    &__textarea{
+        padding: 10px 0 0 0;
+        resize: none;
+    }
+    &__textarea::placeholder{
+        padding: 0 0 0 10px;
+    }
+    &__input-date{
+        padding: 0 0 0 10px;
     }
     &__cup-grid{
-        width: 50%;
+        width: 77%;
         background:$bg-white;
         height: 600px;
         margin: 20px;

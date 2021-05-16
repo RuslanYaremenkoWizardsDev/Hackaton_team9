@@ -34,46 +34,65 @@
            <div class="content-createtourn__fields">
                <div class="content-createtourn__item">
                    <span class="content-createtourn__span">Name of tournament</span>
-                   <input class="content-createtourn__input">
+                   <input class="content-createtourn__input content-createtourn__input-text" placeholder="Enter the cup name...">
                </div>
                <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Tournament description</span>
-                    <textarea class="content-createtourn__input">
+                    <textarea class="content-createtourn__input content-createtourn__textarea" rows="5" placeholder="Enter the cup description..." maxlength="10000"></textarea>
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Mode</span>
-                    <select disabled>
+                    <select class="content-createtourn__input content-createtourn__select" disabled>
                         <option selected>cup</option>
                     </select>
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Place</span>
-                    <input class="content-createtourn__input">
+                    <input class="content-createtourn__input content-createtourn__input-text" placeholder="Enter the cup location...">
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Start date</span>
-                    <input class="content-createtourn__input">
+                    <input class="content-createtourn__input content-createtourn__input-date startDate" type="date">
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Last registration date</span>
-                    <input class="content-createtourn__input">
+                    <input class="content-createtourn__input content-createtourn__input-date lastDate" type="date">
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Level of tournament</span>
-                    <input class="content-createtourn__input">
+                    <select class="content-createtourn__input content-createtourn__select">
+                        <option>advanced</option>
+                        <option selected>middle</option>
+                        <option>begginer</option>
+                    </select>
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Number of participants</span>
-                    <input class="content-createtourn__input">
+                    <select class="content-createtourn__input content-createtourn__select">
+                        <option>128</option>
+                        <option>64</option>
+                        <option selected>32</option>
+                        <option>16</option>
+                        <option>8</option>
+                        <option>4</option>
+                    </select>
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Scenario</span>
-                    <input class="content-createtourn__input">
+                    <select class="content-createtourn__input content-createtourn__select">
+                        <option>one-match confrontation</option>
+                        <option>two-match confrontation</option>
+                        <option>tothree winth</option>
+                    </select>
                 </div>
                 <div class="content-createtourn__item">
                     <span class="content-createtourn__span">Invited players</span>
-                    <input class="content-createtourn__input">
+                    <select class="content-createtourn__input content-createtourn__select">
+                        <option>.</option>
+                        <option>.</option>
+                    </select>
                 </div>
+                <button class="content-createtourn__item btn">Create</button>
            </div>
            <div class="content-createtourn__cup-grid"></div>
         </div>
