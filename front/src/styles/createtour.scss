@@ -14,11 +14,13 @@
     }
     &__item{
         display: flex;
+        flex-direction: column;
+
         justify-content: space-between;
         margin: 10px 0;
     }
     &__span{
-        color:$bg-dark
+        color:$bg-dark;
     }
     &__input{
         background: $bg-secondary;
