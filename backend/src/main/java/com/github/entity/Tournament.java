@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tournaments")
+@Table(name = "tournaments2")
 public class Tournament {
 
     @Id
@@ -31,13 +31,13 @@ public class Tournament {
     @Column(name = "lastRegistration")
     private Long lastRegistration;
 
-    @JoinColumn(name = "tourLvl")
+    @Column(name = "tourLvl")
     private String tourLvl;
 
     @Column(name = "playerQuantity")
     private int playerQuantity;
 
-    @JoinColumn(name = "scenario")
+    @Column(name = "scenario")
     private String scenario;
 
     @Column(name = "players")
