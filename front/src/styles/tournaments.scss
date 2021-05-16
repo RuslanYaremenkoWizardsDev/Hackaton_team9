@@ -21,6 +21,9 @@
         outline: none;
         border: none;
     }
+    &__search-input>option{
+        color:$bg-secondary
+    }
     &__search-input::placeholder{
         color: rgb(160, 160, 160);
         font-style: italic;

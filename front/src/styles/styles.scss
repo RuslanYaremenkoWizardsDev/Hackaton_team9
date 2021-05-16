@@ -67,6 +67,9 @@
             margin: 0 0 0 auto;
             width: 20%;
         }
+        &__settings> select > option, &__settings> select{
+          color: $bg-dark
+        }
         &__set-img{
             width: 25px;
             cursor: pointer;

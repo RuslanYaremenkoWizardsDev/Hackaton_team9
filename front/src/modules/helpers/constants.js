@@ -46,24 +46,29 @@ export const
       ar: 'امسح الكل'
     },
     searchStart: {
-      en: 'Search be start date',
+      en: 'Search by start date',
       ru: 'Поиск по дате старта',
       ar: 'البحث حسب تاريخ البدء'
     },
     searchReg: {
-      en: 'Search by reg date',
-      ru: 'Поиск по дате регистрации',
+      en: 'Search by type',
+      ru: 'Поиск по типу',
       ar: 'البحث حسب تاريخ التسجيل'
     },
     searchState: {
-      en: 'Search by state',
-      ru: 'Поиск по состоянию',
+      en: 'Search by players',
+      ru: 'Поиск по игрокам',
       ar: 'البحث عن طريق الدولة'
     },
     tourName: {
       en: 'Name',
       ru: 'Название',
       ar: 'اسم'
+    },
+    searchCup: {
+      en: 'cup',
+      ru: 'кубок',
+      ar: 'فنجان '
     },
     tourMode: {
       en: 'Mode',
@@ -114,17 +119,17 @@ export const
   tourPlacholder = {
     entStartDate: {
       en: 'Enter start date...',
-      ru: 'Введите дату начала',
+      ru: 'Введите дату начала...',
       ar: 'أدخل تاريخ البدء'
     },
     entRegDate: {
       en: 'Enter reg date...',
-      ru: 'Введите дату регистрации',
+      ru: 'Введите дату регистрации...',
       ar: 'أدخل تاريخ التسجيل'
     },
     entState: {
-      en: 'Enter state',
-      ru: 'Введите состояние',
+      en: 'Enter player name...',
+      ru: 'Введите имя игрока...',
       ar: 'أدخل بلدك'
     }
   },
@@ -188,21 +193,21 @@ export const
   },
   authIpt = {
     login: {
-      en: 'Enter login',
-      ru: 'Введите логин',
+      en: 'Enter login...',
+      ru: 'Введите логин...',
       ar: 'أدخل تسجيل الدخول'
     },
     password: {
-      en: 'Enter password',
-      ru: 'Введите пароль',
+      en: 'Enter password...',
+      ru: 'Введите пароль...',
       ar: 'أدخل كلمة المرور'
     },
   },
   regIpt = {
     ...authIpt,
     confirmPassword: {
-      en: 'Confirm password',
-      ru: 'Подтвердите пароль',
+      en: 'Confirm password...',
+      ru: 'Подтвердите пароль...',
       ar: 'تأكيد كلمة المرور'
     }
   },
@@ -349,4 +354,71 @@ export const
       ru: 'Введите место проведения',
       ar: 'إدخال الدولة'
     }
+  },
+  settingModal = {
+    modalHead: {
+      en: 'My account',
+      ru: 'Мой аккаунт',
+      ar: 'الحساب'
+    }, modalDescr: {
+      en: 'Below you can change your login and/or password',
+      ru: 'Ниже вы можете изменить и/или пароль',
+      ar: 'أدناه يمكنك تغيير و / أو كلمة المرور'
+    }, modalLogin: {
+      en: 'Login',
+      ru: 'Логин',
+      ar: 'ليأتي'
+    }, modalPassword: {
+      en: 'Password',
+      ru: 'Пароль',
+      ar: 'كلمه السر'
+    }, confirmModal: {
+      en: 'Confirm password',
+      ru: 'Подтвердить пароль',
+      ar: 'تأكيد كلمة المرور'
+    }, ok: {
+      en: 'OK',
+      ru: 'ОК',
+      ar: 'بلى'
+    }, modalCancel: {
+      en: 'Cancel',
+      ru: 'Отмена',
+      ar: 'إلغاء'
+    },
+  },
+  settingIpt = {
+    modalLoginIpt: {
+      en: 'Enter your new login...',
+      ru: 'Введите новый логин',
+      ar: 'أدخل اسم مستخدم جديد'
+    }, modalPasswordIpt: {
+      en: 'Enter your new password...',
+      ru: 'Введите новый пароль',
+      ar: 'أدخل كلمة مرور جديدة'
+    }, confirmModalIpt: {
+      en: 'Repeat password...',
+      ru: 'Повторите пароль',
+      ar: 'اعد كلمة السر'
+    },
+  },
+  deleteModal = {
+    ok: {
+      en: 'OK',
+      ru: 'ОК',
+      ar: 'بلى'
+    },
+    modalCancel: {
+      en: 'Cancel',
+      ru: 'Отмена',
+      ar: 'إلغاء'
+    }, modalClear: {
+      en: 'Clear All',
+      ru: 'Удалить все',
+      ar: 'احذف كل شيء'
+    }, sure: {
+      en: 'Are you sure you want to delete<br> all data?',
+      ru: 'Вы уверенны что хотите удалить все данные',
+      ar: 'هل أنت متأكد أنك تريد حذف بياناتك؟'
+    },
   };
+

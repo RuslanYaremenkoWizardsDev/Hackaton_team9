@@ -35,17 +35,18 @@
                 <div class="content-tournaments__search-form">
                     <span id="searchStart">Search by start date</span>
                     <input id="entStartDate" class="content-tournaments__search-input"
-                        placeholder="&#128269; Enter start date...">
+                        placeholder="Enter start date...">
                 </div>
                 <div class="content-tournaments__search-form">
-                    <span id="searchReg">Search by reg date</span>
-                    <input id="entRegDate" class="content-tournaments__search-input"
-                        placeholder="&#128269; Enter reg date...">
+                    <span id="searchReg">Search by type</span>
+                    <select id="entRegDate" class="content-tournaments__search-input" disabled>
+                        <option checked id="searchCup">cup</option>
+                        <option>championship</option>
+                    </select>
                 </div>
                 <div class="content-tournaments__search-form">
-                    <span id="searchState">Search by state</span>
-                    <input id="entState" class="content-tournaments__search-input"
-                        placeholder="&#128269; Enter state...">
+                    <span id="searchState">Search by players</span>
+                    <input id="entState" class="content-tournaments__search-input" placeholder="Enter player name...">
                 </div>
                 <button class="content-tournaments__search-form btn delete-btn" id="clearAll">Clear all</button>
             </div>

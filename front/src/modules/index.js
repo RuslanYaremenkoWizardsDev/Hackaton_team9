@@ -4,7 +4,7 @@ import urls from './helpers/urls';
 import {
   message, translateTour, tourPlacholder,
   regTranslate, authTranslate, authIpt, regIpt, translateStats,
-  createIpt, createText
+  createIpt, createText, deleteModal
 } from './helpers/constants';
 import { support } from './helpers/support';
 import { login, registration } from './auth/auth';
@@ -22,6 +22,6 @@ export {
 export {
   urls, message, support, modal, modalDelete, translateTour,
   tourPlacholder, regTranslate, authTranslate, authIpt, regIpt,
-  translateStats, createIpt, createText
+  translateStats, createIpt, createText, deleteModal
 };
 
