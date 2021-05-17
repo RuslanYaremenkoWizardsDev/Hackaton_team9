@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/auth', routes);
+app.use('/createtour', routes);
 async function connect() {
   await User.сonnect();
   app.listen(3000, () => console.log('start'));

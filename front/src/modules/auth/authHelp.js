@@ -40,15 +40,20 @@ export default class AuthHelp {
     submit(url, this.body);
   }
 
-  showPass = (element, input) => {
-    element.addEventListener('click', () => {
-      if (input.getAttribute('type') === 'password') {
-        input.setAttribute('type', 'text');
-      }
-      else if (input.getAttribute('type') === 'password') {
-        input.setAttribute('type', 'password');
-      }
+  showPass = () => {
+    const show = document.querySelectorAll('#hidePass');
+    show.forEach(el => {
+      el.addEventListener('click', () => {
+        const ipt = el.previousElementSibling;
+        if (ipt.type === 'password') {
+          ipt.type = 'text';
+        }
+        else if (ipt.type === 'text') {
+          ipt.type = 'password';
+        }
+      });
     });
+
   }
 };
 

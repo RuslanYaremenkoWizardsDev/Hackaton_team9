@@ -14,12 +14,14 @@ import { modal } from './helpers/modal';
 import { modalDelete } from './helpers/modal';
 import translateAuth from './auth/translateAuth';
 import addTours from './mainPage/addTours';
-
+import isValid from './mainPage/isValid';
+import logOut from './mainPage/logOut';
 
 export {
   validation, getFetch, login, registration, renderModal,
-  renderDeleteModal, translateAuth, addTours
+  renderDeleteModal, translateAuth, addTours, isValid, logOut
 };
+
 
 export {
   urls, message, support, modal, modalDelete, translateTour,

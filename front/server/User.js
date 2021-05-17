@@ -12,8 +12,7 @@ const schema = new Schema({
   password: {
     type: String,
     required: true
-  },
-  person: [{ type: Schema.Types.ObjectId, ref: 'Person' }]
+  }
 }, { collection: 'users' });
 const UserSchema = model('User', schema);
 class User {
