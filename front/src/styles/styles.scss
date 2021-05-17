@@ -60,6 +60,9 @@
             transform: scale(1.1);
             color: $button-bg;            
         }
+        &__color-theme{
+          // background: rgba(255, 255, 255, 0.4);
+        }
         &__settings{
             display: flex;
             align-items: center;

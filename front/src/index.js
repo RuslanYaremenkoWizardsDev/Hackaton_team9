@@ -5,6 +5,7 @@ import {
   translateStats, createIpt, createText
 } from './modules';
 import { renderDeleteModal } from './modules/mainPage/renderModal';
+import { changeColors } from './modules/mainPage/chengeColorTheme';
 import translateMain from './modules/mainPage/translateMain';
 import './styles/index.scss';
 
@@ -24,15 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
     translateMain(createText, createIpt);
     document.querySelector('.startDate').setAttribute('min', support.getDate(new Date));
     document.querySelector('.lastDate').setAttribute('max', support.getDate(new Date));
+    changeColors()
+
   }
   else if (path === '/stats.html') {
     renderModal();
     translateMain(translateStats, []);
+    changeColors()
+
   }
   else if (path === '/tournaments.html') {
     renderModal();
     renderDeleteModal();
     translateMain(translateTour, tourPlacholder);
+    changeColors()
+
   }
 });
 
