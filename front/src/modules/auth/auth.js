@@ -3,10 +3,8 @@ import { getFetch, support } from '..';
 export async function login(url, body) {
   const sendAuth = await getFetch(url, 'POST', body);
   if (sendAuth.ok) {
-    const token = await sendAuth.json();
-    console.log(token);
-    debugger;
-    support.lsSet(token);
+    const token = await sendAuth.text();
+    support.lsSet('token', token);
     location.replace('http://localhost:4200/tournaments.html');
   }
 }

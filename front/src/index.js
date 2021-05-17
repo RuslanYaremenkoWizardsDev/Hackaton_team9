@@ -2,7 +2,7 @@ import {
   urls, validation, login, registration,
   renderModal, support, translateAuth,
   regTranslate, authTranslate, authIpt, regIpt, translateTour, tourPlacholder,
-  translateStats, createIpt, createText
+  translateStats, createIpt, createText, addTours
 } from './modules';
 import { renderDeleteModal } from './modules/mainPage/renderModal';
 import { changeColors } from './modules/mainPage/chengeColorTheme';
@@ -40,27 +40,45 @@ document.addEventListener('DOMContentLoaded', () => {
     translateMain(translateTour, tourPlacholder);
     changeColors()
 
+    addTours();
   }
 });
 
 
 // fetchWithToken('/account').then(res => res.json()).then(data => console.log(data));
 
-
-const body = {
-  login: 'admin1234',
-  password: 'admin1234',
-  // confirmPassword: 'admin1234'
-};
-fetch('http://hackatonteam9.herokuapp.com/auth', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(body)
-})
-  .then(data => {
-    console.log(data.headers.get('Authorization'));
-    data.json();
+fetch('http://hackatonteam9.herokuapp.com/createtournament',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify({
+      'tourName': 'SuperPuperChampionShip',
+      'description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, est aperiam magnam deleniti libero incidunt excepturi, eligendi aliquam voluptates molestiae impedit id delectus repudiandae natus autem facilis recusandae. Natus, nulla.',
+      'mode': 'Cup',
+      'place': 'Mars',
+      'startDate': '12.06.2021',
+      'lastRegistration': '10.06.2021',
+      'tourLvl': 'beginner',
+      'playerQuantity': '128',
+      'scenario': 'one-match',
+      'players': [
+        'admin123',
+        'admin1234'
+      ]
+    })
   })
-  .then(data => console.log(data));
+//   .then(res => res.json())
+//   .then(data => console.log(data));
+
+// fetch('http://hackatonteam9.herokuapp.com/gettournaments',
+//   {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': localStorage.getItem('token')
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(data => console.log(data));
