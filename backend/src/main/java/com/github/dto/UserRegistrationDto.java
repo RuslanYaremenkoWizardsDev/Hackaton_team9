@@ -1,5 +1,7 @@
 package com.github.dto;
 
+import com.github.entity.User;
+
 import java.util.Objects;
 
 public class UserRegistrationDto {
@@ -10,7 +12,7 @@ public class UserRegistrationDto {
 
     private String confirmPassword;
 
-    public UserRegistrationDto() {
+    public UserRegistrationDto(User byNickname) {
     }
 
     public UserRegistrationDto(String login, String password) {
