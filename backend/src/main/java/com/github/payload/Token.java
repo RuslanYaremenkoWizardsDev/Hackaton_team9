@@ -69,21 +69,8 @@ public class Token implements Serializable {
         return createdAt;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Token token = (Token) o;
-        return expireIn == token.expireIn &&
-                createdAt == token.createdAt &&
-                role == token.role &&
-                Objects.equals(nickname, token.nickname);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(role, nickname, expireIn, createdAt);
-    }
+
 
     @Override
     public String toString() {
@@ -93,5 +80,21 @@ public class Token implements Serializable {
                 ", expireIn=" + expireIn +
                 ", createdAt=" + createdAt +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Token token = (Token) o;
+        return expireIn == token.expireIn &&
+                createdAt == token.createdAt &&
+                Objects.equals(role, token.role) &&
+                Objects.equals(nickname, token.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(role, nickname, expireIn, createdAt);
     }
 }
