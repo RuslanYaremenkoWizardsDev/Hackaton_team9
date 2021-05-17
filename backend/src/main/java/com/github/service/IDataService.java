@@ -11,6 +11,10 @@ public interface IDataService {
 
     List<Tournament> readAllTournaments();
 
+    List<Tournament> findByDate(Tournament tournament);
+
+    List<Tournament> findByPlace(Tournament tournament);
+
     Tournament findByName(Tournament tournament);
 
     User create(User user);

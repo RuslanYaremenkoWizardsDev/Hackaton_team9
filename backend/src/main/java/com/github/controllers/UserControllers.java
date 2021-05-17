@@ -68,6 +68,18 @@ public class UserControllers {
         }
     }
 
+    public Tournament findByName(Tournament tournament) {
+        return this.dataService.findByName(tournament);
+    }
+
+    public List<Tournament> findByDate(Tournament tournament) {
+        return this.dataService.findByDate(tournament);
+    }
+
+    public List<Tournament> findByPlace(Tournament tournament) {
+        return this.dataService.findByPlace(tournament);
+    }
+
     public List<Tournament> getAllTournaments() {
         return this.dataService.readAllTournaments();
     }

@@ -24,10 +24,19 @@ public class DataService implements IDataService {
     }
 
     @Override
+    public List<Tournament> findByDate(Tournament tournament) {
+        return this.repository.findByDate(tournament);
+    }
+
+    @Override
+    public List<Tournament> findByPlace(Tournament tournament) {
+        return this.repository.findByPlace(tournament);
+    }
+
+    @Override
     public Tournament findByName(Tournament tournament) {
         return this.repository.findByName(tournament);
     }
-
 
     @Override
     public User create(User user) {

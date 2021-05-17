@@ -98,6 +98,34 @@ public class Repository {
         return tournament;
     }
 
+    public List<Tournament> findByDate(Tournament tournament) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Tournament> cr = cb.createQuery(Tournament.class);
+            Root<Tournament> root = cr.from(Tournament.class);
+            cr.select(root).where(cb.gt(root.get("startDate"), tournament.getStartDate()));
+            Query<Tournament> query = session.createQuery(cr);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return List.of();
+    }
+
+    public List<Tournament> findByPlace(Tournament tournament) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Tournament> cr = cb.createQuery(Tournament.class);
+            Root<Tournament> root = cr.from(Tournament.class);
+            cr.select(root).where(cb.equal(root.get("place"), tournament.getPlace()));
+            Query<Tournament> query = session.createQuery(cr);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return List.of();
+    }
+
     public List<User> findAll() {
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             return session.createQuery("select p from User p", User.class).list();

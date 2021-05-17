@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -68,7 +69,16 @@ public class Handler extends HttpServlet {
         }
         if(url.contains("/gettournaments")) {
             Token t = checkTokenInRequest(req, resp);
-            List<Tournament> list = this.userControllers.getAllTournaments();
+            List<Tournament> list = new ArrayList<>();
+            if(req.getHeader("Content-Type").contains("application/json")) {
+                String body = req.getReader().lines().collect(Collectors.joining());
+                Tournament tournament = JsonHelper.fromFormat(body, Tournament.class).get();
+                if(!tournament.getTourName().isBlank()) {list.addAll(List.of(this.userControllers.findByName(tournament)));}
+                if(!Objects.isNull(tournament.getStartDate())) {list.addAll(this.userControllers.findByDate(tournament));}
+                if(!tournament.getPlace().isBlank()) {list.addAll(this.userControllers.findByPlace(tournament));}
+            } else {
+                list = this.userControllers.getAllTournaments();
+            }
             resp.setContentType("application/json");
             out.write(JsonHelper.toFormat(list).get());
         }
