@@ -6,6 +6,7 @@ import {
 } from './modules';
 import AuthHelp from './modules/auth/authHelp';
 import { renderDeleteModal } from './modules/mainPage/renderModal';
+import { changeColors } from './modules/mainPage/chengeColorTheme';
 import translateMain from './modules/mainPage/translateMain';
 import './styles/index.scss';
 const { showPass } = new AuthHelp();
@@ -28,18 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
     isValid();
     document.querySelector('.startDate').setAttribute('min', support.getDate(new Date));
     document.querySelector('.lastDate').setAttribute('max', support.getDate(new Date));
+    changeColors()
+
   }
   else if (path === '/stats.html') {
     logOut();
     renderModal();
     translateMain(translateStats, []);
     isValid();
+    changeColors()
+
   }
   else if (path === '/tournaments.html') {
     logOut();
     renderModal();
     renderDeleteModal();
     translateMain(translateTour, tourPlacholder);
+    changeColors()
+
     addTours();
     isValid();
   }
